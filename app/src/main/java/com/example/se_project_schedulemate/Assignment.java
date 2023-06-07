@@ -5,11 +5,11 @@ import java.sql.Timestamp;
 public class Assignment {
     private String assignmentName;
     private Timestamp notification;
-    private String session;
+    private Integer session;
     private String lecturer;
     private Timestamp deadline;
 
-    public Assignment(String assignmentName, Timestamp notification, String session, String lecturer, Timestamp deadline) {
+    public Assignment(String assignmentName, Timestamp notification, Integer session, String lecturer, Timestamp deadline) {
         this.assignmentName = assignmentName;
         this.notification = notification;
         this.session = session;
@@ -33,11 +33,11 @@ public class Assignment {
         this.notification = notification;
     }
 
-    public String getSession() {
+    public Integer getSession() {
         return session;
     }
 
-    public void setSession(String session) {
+    public void setSession(Integer session) {
         this.session = session;
     }
 

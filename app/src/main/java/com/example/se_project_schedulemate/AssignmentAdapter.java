@@ -40,7 +40,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvAssignmentName.setText(assignments.get(position).getAssignmentName());
         holder.tvNotification.setText("Notification: " + assignments.get(position).getNotification());
-        holder.tvSession.setText("Session: " + assignments.get(position).getAssignmentName());
+        holder.tvSession.setText("Session: " + assignments.get(position).getSession());
         holder.tvLecturer.setText(assignments.get(position).getLecturer());
         holder.tvDeadline.setText("DEADLINE: " + assignments.get(position).getDeadline());
 
