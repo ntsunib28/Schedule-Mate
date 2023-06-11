@@ -1,37 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_alarmCard"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/itembox_putih"
+    android:backgroundTint="@color/white"
+    android:padding="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_clockImage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="295dp"
+            android:layout_marginTop="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/clockimage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="324dp"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:divider="@drawable/emptydivider"
+        android:dividerPadding="10dp"
+        android:orientation="vertical"
+        android:showDividers="middle">
 
 
         <TextView
             android:id="@+id/tvClassName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Software Engineering Class" />
+            android:fontFamily="sans-serif"
+            android:text="Software Engineering Class"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvAlarmTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="12 April 2023, 09.00 GMT+7" />
+            android:text="Alarm : 12 April 2023, 09.00 GMT+7"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvDescText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LEC - Session 10" />
+            android:text="Description : LEC - Session 10"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvSessDuration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Session Duration: " />
+            android:text="Duration : 09.20 - 11.00"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>
