@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-35dp"
             android:background="@drawable/rounded_corner_bottom"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="20dp"
+            android:layout_column="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,12 +54,14 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+<!--Settings-->
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="15dp"
-            app:cardCornerRadius="30dp">
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="30dp"
+            android:layout_column="1">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -72,35 +75,153 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+<!--Number Picker-->
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="15dp"
+            android:layout_marginTop="-5dp"
             android:background="@drawable/settings_backgrouncard"
-            app:cardCornerRadius="15dp">
+            app:cardCornerRadius="15dp"
+            android:layout_column="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_margin="15dp"
+                    android:text="Class Alarm" />
+
+                <NumberPicker
+                    android:id="@+id/npClassSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="Minutes Before" />
+                <TextView
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_margin="15dp"
+                    android:text="Asignment Reminder" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="Remind me every" />
+
+                <NumberPicker
+                    android:id="@+id/npARSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="days" />
+
+                <TextView
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_margin="15dp"
+                    android:text="Forum Reminder" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="Remind me every" />
+
+                <NumberPicker
+                    android:id="@+id/npForumSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="15dp"
+                    android:text="days" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_height="50dp"
+            android:layout_width="170dp"
+            android:id="@+id/applySettings"
+            app:cardCornerRadius="30dp"
+            android:layout_marginTop="-5dp"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp">
 
             <TextView
-                android:layout_width="366dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:gravity="left"
-                android:layout_margin="15dp"
-                android:text="Class Alarm" />
-
-            <NumberPicker
-                android:id="@+id/npSettings"
                 android:layout_width="wrap_content"
-                android:layout_height="125dp"
+                android:layout_height="wrap_content"
+                android:text="APPLY\nSETTINGS"
+                android:textAlignment="center"
                 android:layout_gravity="center"
-                android:gravity="center" />
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/logoutSettings"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:layout_marginRight="1000000dp"
+            android:layout_marginLeft="-198dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="15dp"
+            app:cardCornerRadius="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="15dp"
+                app:srcCompat="@drawable/logout" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="35dp"
-                android:layout_gravity="bottom|center"
-                android:text="Minutes Before" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="45dp"
+                android:layout_marginBottom="5dp"
+                android:text="LOG OUT"
+                android:textAlignment="center" />
         </androidx.cardview.widget.CardView>
     </GridLayout>
 </RelativeLayout>
