@@ -101,39 +101,40 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
         String returnString = null;
 
         switch(monthIndex){
-            case 1:
+            case 0:
                 returnString = "January";
                 break;
-            case 2:
+            case 1:
                 returnString = "February";
-            case 3:
+                break;
+            case 2:
                 returnString = "March";
                 break;
-            case 4:
+            case 3:
                 returnString = "April";
                 break;
-            case 5:
+            case 4:
                 returnString = "May";
                 break;
-            case 6:
+            case 5:
                 returnString = "June";
                 break;
-            case 7:
+            case 6:
                 returnString = "July";
                 break;
-            case 8:
+            case 7:
                 returnString = "August";
                 break;
-            case 9:
+            case 8:
                 returnString = "September";
                 break;
-            case 10:
+            case 9:
                 returnString = "October";
                 break;
-            case 11:
+            case 10:
                 returnString = "November";
                 break;
-            case 12:
+            case 11:
                 returnString = "December";
                 break;
 

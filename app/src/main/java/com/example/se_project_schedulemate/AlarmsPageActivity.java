@@ -21,7 +21,23 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
         alarmList.add(new Alarm(
                 "Software Engineering Class",
-                new Timestamp(2023, 3, 12, 9, 0, 0, 0),
+                new Timestamp(2023, 11, 12, 9, 0, 0, 0),
+                "LEC - Session 7",
+                new Timestamp(0, 0, 0, 9, 20, 0, 0),
+                new Timestamp(0, 0, 0, 11, 0 ,0, 0)
+        ));
+
+        alarmList.add(new Alarm(
+                "User Experience Class",
+                new Timestamp(2023, 4, 12, 9, 0, 0, 0),
+                "LEC - Session 11",
+                new Timestamp(0, 0, 0, 9, 20, 0, 0),
+                new Timestamp(0, 0, 0, 11, 0 ,0, 0)
+        ));
+
+        alarmList.add(new Alarm(
+                "Software Engineering Class",
+                new Timestamp(2023, 0, 12, 9, 0, 0, 0),
                 "LEC - Session 7",
                 new Timestamp(0, 0, 0, 9, 20, 0, 0),
                 new Timestamp(0, 0, 0, 11, 0 ,0, 0)
@@ -29,7 +45,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
         alarmList.add(new Alarm(
                 "Software Engineering Class",
-                new Timestamp(2023, 3, 12, 9, 0, 0, 0),
+                new Timestamp(2023, 1, 12, 9, 0, 0, 0),
                 "LEC - Session 7",
                 new Timestamp(0, 0, 0, 9, 20, 0, 0),
                 new Timestamp(0, 0, 0, 11, 0 ,0, 0)
@@ -37,7 +53,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
         alarmList.add(new Alarm(
                 "Software Engineering Class",
-                new Timestamp(2023, 3, 12, 9, 0, 0, 0),
+                new Timestamp(2023, 11, 12, 9, 0, 0, 0),
                 "LEC - Session 7",
                 new Timestamp(0, 0, 0, 9, 20, 0, 0),
                 new Timestamp(0, 0, 0, 11, 0 ,0, 0)
@@ -45,7 +61,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
         alarmList.add(new Alarm(
                 "Software Engineering Class",
-                new Timestamp(2023, 3, 12, 9, 0, 0, 0),
+                new Timestamp(2023, 11, 12, 9, 0, 0, 0),
                 "LEC - Session 7",
                 new Timestamp(0, 0, 0, 9, 20, 0, 0),
                 new Timestamp(0, 0, 0, 11, 0 ,0, 0)
@@ -53,11 +69,12 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
         alarmList.add(new Alarm(
                 "Software Engineering Class",
-                new Timestamp(2023, 3, 12, 9, 0, 0, 0),
+                new Timestamp(2023, 11, 28, 14, 20, 0, 0),
                 "LEC - Session 7",
                 new Timestamp(0, 0, 0, 9, 20, 0, 0),
                 new Timestamp(0, 0, 0, 11, 0 ,0, 0)
         ));
+
 
         AlarmAdapter adapter = new AlarmAdapter(this, this);
         adapter.setAlarmAdapterItem(alarmList);

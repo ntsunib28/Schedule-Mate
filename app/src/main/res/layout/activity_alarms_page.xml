@@ -10,7 +10,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_alarms"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="132dp"
         app:layout_constraintEnd_toEndOf="parent"
