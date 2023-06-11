@@ -16,13 +16,7 @@
         android:theme="@style/Theme.SE_Project_ScheduleMate"
         tools:targetApi="31">
         <activity
-            android:name=".SetAlarm"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AlarmsPageActivity"
+            android:name=".ForumsActivity"
             android:exported="true">
 
             <intent-filter>
@@ -30,11 +24,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
+        <activity
+            android:name=".SetAlarm"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlarmsPageActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".AssignmentActivity"
-            android:exported="false"/>
+            android:exported="false" />
 
         <receiver android:name=".MyBroadcastReceiver" />
     </application>

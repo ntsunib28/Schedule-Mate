@@ -13,7 +13,6 @@ import java.util.Vector;
 
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
 
-    Vector<String> months;
     Vector<Alarm> listAlarm;
     Context context;
 
