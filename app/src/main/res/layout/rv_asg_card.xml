@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="#00FFFFFF">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="#00FFFFFF"
+    android:layout_marginBottom="10dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="30dp"
-        android:background="@drawable/rounded_corner">
+        android:background="@drawable/rounded_corner"
+        android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/tvAsignmentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textSize="24dp"
-            android:textFontWeight="500"
-            android:textAlignment="center"
             android:background="@drawable/rounded_corner_top_green3"
-            android:text="Assignment GSLC 2"/>
+            android:padding="5dp"
+            android:text="Assignment GSLC 2"
+            android:textAlignment="center"
+            android:textFontWeight="500"
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/tvNotification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
             android:layout_weight="500"
-            android:textSize="18dp"
-            android:text="Notification: " />
+            android:padding="5dp"
+            android:text="Notification: "
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tvSession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textSize="18dp"
-            android:text="Session " />
+            android:text="Session "
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tvLecturer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textSize="18dp"
-            android:text="Lecturer 101" />
+            android:text="Lecturer 101"
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tvDeadline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textSize="18dp"
             android:text="Deadline: "
-            android:textColor="#FF0000"/>
+            android:textColor="#FF0000"
+            android:textSize="18dp" />
 
 
     </LinearLayout>

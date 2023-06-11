@@ -10,17 +10,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_Assignment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
 
 
-<!--        <com.google.android.material.bottomappbar.BottomAppBar-->
+        <!--        <com.google.android.material.bottomappbar.BottomAppBar-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_gravity="bottom"-->
@@ -28,14 +22,34 @@
 <!--            app:fabCradleMargin="10dp"-->
 <!--            app:fabCradleRoundedCornerRadius="10dp"-->
 <!--            app:fabCradleVerticalOffset="10dp">-->
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/bottomNavigationView"
-                app:menu="@menu/bottom_menu"
-                android:background="#FFFFFFFF"
-                app:labelVisibilityMode="unlabeled"/>
-<!--        </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_Assignment"
+                android:layout_width="wrap_content"
+                android:layout_height="564dp"
+                android:layout_marginTop="84dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFFFF"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bottom_menu" />
+        <!--        </com.google.android.material.bottomappbar.BottomAppBar>-->
     </LinearLayout>
 
 
