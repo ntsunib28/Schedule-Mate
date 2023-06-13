@@ -93,6 +93,7 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
                 startActivity(intent);
             }
         });
+
     }
 
     @Override

@@ -23,23 +23,25 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth auth;
     ProgressBar progressBar;
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(Login.this, AlarmsPageActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = auth.getCurrentUser();
+//        if(currentUser != null){
+//            Intent intent = new Intent(Login.this, AlarmsPageActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        auth = FirebaseAuth.getInstance();
 
         Button buttonLogin = findViewById(R.id.llogin);
         EditText ltfemail = findViewById(R.id.ltfemail);
