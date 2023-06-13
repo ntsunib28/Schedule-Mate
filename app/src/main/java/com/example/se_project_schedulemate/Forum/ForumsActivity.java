@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.se_project_schedulemate.Alarm.AlarmsPageActivity;
 import com.example.se_project_schedulemate.Assignment.AssignmentActivity;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
+import com.example.se_project_schedulemate.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Timestamp;
@@ -83,6 +87,18 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
     @Override
     public void onClick(int position) {
 
+    }
+
+    // Setting button kanan atas
+    public void settingsBtnFunction(){
+        ImageView settingsBtn = findViewById(R.id.settingsBtn);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForumsActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     BottomNavigationView.OnNavigationItemSelectedListener navListener =
