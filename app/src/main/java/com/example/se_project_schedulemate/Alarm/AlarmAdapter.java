@@ -1,4 +1,4 @@
-package com.example.se_project_schedulemate;
+package com.example.se_project_schedulemate.Alarm;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.se_project_schedulemate.MyInterface;
+import com.example.se_project_schedulemate.R;
 
 import java.util.Vector;
 

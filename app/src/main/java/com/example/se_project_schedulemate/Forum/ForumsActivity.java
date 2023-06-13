@@ -1,4 +1,4 @@
-package com.example.se_project_schedulemate;
+package com.example.se_project_schedulemate.Forum;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.se_project_schedulemate.MyInterface;
+import com.example.se_project_schedulemate.R;
+
 import java.sql.Timestamp;
 import java.util.Vector;
 
-public class ForumsActivity extends AppCompatActivity implements MyInterface{
+public class ForumsActivity extends AppCompatActivity implements MyInterface {
 
     RecyclerView rv_forum;
     Vector<Forum> forumList;

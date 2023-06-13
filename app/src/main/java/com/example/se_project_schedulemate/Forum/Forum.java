@@ -1,4 +1,4 @@
-package com.example.se_project_schedulemate;
+package com.example.se_project_schedulemate.Forum;
 
 import java.sql.Timestamp;
 

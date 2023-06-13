@@ -1,8 +1,10 @@
-package com.example.se_project_schedulemate;
+package com.example.se_project_schedulemate.Assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.se_project_schedulemate.R;
 
 public class AssignmentDetail extends AppCompatActivity {
 

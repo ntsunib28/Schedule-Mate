@@ -1,8 +1,7 @@
-package com.example.se_project_schedulemate;
+package com.example.se_project_schedulemate.Assignment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,12 +10,16 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.se_project_schedulemate.Alarm.AlarmsPageActivity;
+import com.example.se_project_schedulemate.Forum.ForumsActivity;
+import com.example.se_project_schedulemate.MyInterface;
+import com.example.se_project_schedulemate.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Timestamp;
 import java.util.Vector;
 
-public class AssignmentActivity extends AppCompatActivity implements MyInterface{
+public class AssignmentActivity extends AppCompatActivity implements MyInterface {
     RecyclerView rv_Assignment;
     Vector<Assignment> assignmentVector;
 
@@ -81,10 +84,10 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
                         Intent intent = new Intent(AssignmentActivity.this, AlarmsPageActivity.class);
                         startActivity(intent);
                     }
-//                    else if (item.getItemId() == R.id.forums_menu) {
-//                        Intent intent = new Intent(AssignmentActivity.this, Forum.class);
-//                        startActivity(intent);
-//                    }
+                    else if (item.getItemId() == R.id.forums_menu) {
+                        Intent intent = new Intent(AssignmentActivity.this, ForumsActivity.class);
+                        startActivity(intent);
+                    }
 
                     return true;
                 }

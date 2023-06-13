@@ -1,4 +1,4 @@
-package com.example.se_project_schedulemate;
+package com.example.se_project_schedulemate.Alarm;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -14,6 +14,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.se_project_schedulemate.R;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -51,7 +53,7 @@ public class SetAlarm extends AppCompatActivity {
 
     private void notification() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            CharSequence name = "Alarm";
+            CharSequence name = "com/example/se_project_schedulemate/Alarm";
             String description = "Hey, Wake Up!!";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
 

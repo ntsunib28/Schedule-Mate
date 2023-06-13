@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "212529391177",
+    "project_id": "schedule-mate-70c31",
+    "storage_bucket": "schedule-mate-70c31.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212529391177:android:21e5cf2310a4ce9e4c0198",
+        "android_client_info": {
+          "package_name": "com.example.se_project_schedulemate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212529391177-l2n0uj3hj2ojmp32nooenboh62qr0mvr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUpFN0B6TKyAJf5vXSU_V6RQnLkERFfFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212529391177-l2n0uj3hj2ojmp32nooenboh62qr0mvr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

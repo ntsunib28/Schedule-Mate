@@ -1,16 +1,18 @@
-package com.example.se_project_schedulemate;
+package com.example.se_project_schedulemate.Alarm;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
+
+import com.example.se_project_schedulemate.MyInterface;
+import com.example.se_project_schedulemate.R;
 
 import java.sql.Timestamp;
 import java.util.Vector;
 
-public class AlarmsPageActivity extends AppCompatActivity implements MyInterface  {
+public class AlarmsPageActivity extends AppCompatActivity implements MyInterface {
 
     RecyclerView rv_AlarmRecycler;
     Vector<Alarm> alarmList;

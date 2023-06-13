@@ -1,4 +1,4 @@
-package com.example.se_project_schedulemate;
+package com.example.se_project_schedulemate.Alarm;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -15,6 +15,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.se_project_schedulemate.Alarm.SetAlarm;
+import com.example.se_project_schedulemate.R;
+
 public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -28,7 +31,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "Alarm Reminders")
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentText("Alarm")
+                .setContentText("com/example/se_project_schedulemate/Alarm")
                 .setContentText("Hey, Wake Up!")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
