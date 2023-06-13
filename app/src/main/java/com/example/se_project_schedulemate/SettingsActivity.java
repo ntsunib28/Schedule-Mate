@@ -9,11 +9,12 @@ import android.widget.TextView;
 
 public class SettingsActivity extends AppCompatActivity {
     // Font yg di input
-    Typeface boldFont = Typeface.createFromAsset(getAssets(), "JosefinSans-Bold.ttf");
-    Typeface regularFont = Typeface.createFromAsset(getAssets(), "JosefinSans-Regular.ttf");
+//    Typeface boldFont = Typeface.createFromAsset(getAssets(), "JosefinSans-Bold.ttf");
+//    Typeface regularFont = Typeface.createFromAsset(getAssets(), "JosefinSans-Regular.ttf");
 
     //Class yg fontnya ingin di ganti
-    TextView profile = findViewById(R.id.profile);
+    TextView username = findViewById(R.id.username);
+    TextView nim = findViewById(R.id.nim);
     TextView header = findViewById(R.id.header);
     TextView subHeader1 = findViewById(R.id.subHeader1);
     TextView descClass = findViewById(R.id.descClass);
@@ -24,27 +25,28 @@ public class SettingsActivity extends AppCompatActivity {
     TextView descForum1 = findViewById(R.id.descForum1);
     TextView descForum2 = findViewById(R.id.descForum2);
     TextView applyText = findViewById(R.id.applyText);
-    TextView logoutText = findViewById(R.id.logoutText);
+//    TextView logoutText = findViewById(R.id.logoutText);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // Apply fontnya
-        header.setTypeface(boldFont);
-        subHeader1.setTypeface(boldFont);
-        subHeader2.setTypeface(boldFont);
-        subHeader3.setTypeface(boldFont);
-
-        profile.setTypeface(regularFont);
-        descClass.setTypeface(regularFont);
-        descAsg2.setTypeface(regularFont);
-        descAsg1.setTypeface(regularFont);
-        descForum1.setTypeface(regularFont);
-        descForum2.setTypeface(regularFont);
-
-        applyText.setTypeface(boldFont);
-        logoutText.setTypeface(boldFont);
+//        // Apply fontnya
+//        header.setTypeface(boldFont);
+//        subHeader1.setTypeface(boldFont);
+//        subHeader2.setTypeface(boldFont);
+//        subHeader3.setTypeface(boldFont);
+//
+//        username.setTypeface(regularFont);
+//        nim.setTypeface(regularFont);
+//        descClass.setTypeface(regularFont);
+//        descAsg2.setTypeface(regularFont);
+//        descAsg1.setTypeface(regularFont);
+//        descForum1.setTypeface(regularFont);
+//        descForum2.setTypeface(regularFont);
+//
+//        applyText.setTypeface(boldFont);
+//        logoutText.setTypeface(boldFont);
     }
 
 
