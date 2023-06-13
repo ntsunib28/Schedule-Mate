@@ -82,6 +82,7 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         init();
+        settingsBtnFunction();
     }
 
     @Override

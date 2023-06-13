@@ -5,6 +5,7 @@
     <color name="greenBack1">#FF38AA26</color>
     <color name="greenBack2">#FF0D4E0F</color>
     <color name="green3">#FFA9EE00</color>
+    <color name="inactive_icon">#FF7B7878</color>
 
     // Custom color
     <color name="cstm_red">#FF0000</color>
