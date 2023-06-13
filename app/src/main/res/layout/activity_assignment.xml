@@ -48,6 +48,9 @@
             android:layout_height="wrap_content"
             android:background="#FFFFFFFF"
             app:labelVisibilityMode="unlabeled"
+            app:itemIconSize="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_menu" />
         <!--        </com.google.android.material.bottomappbar.BottomAppBar>-->
     </LinearLayout>

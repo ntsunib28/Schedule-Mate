@@ -32,21 +32,36 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="0dp"
                 app:srcCompat="@drawable/profile" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="0dp"
-                android:text="John Doeng\n\n25069696969"
-                android:textSize="20sp" />
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:text="John Doeng"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:text="25069696969"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="100dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
                 app:srcCompat="@drawable/setting" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -70,6 +85,7 @@
         android:layout_height="wrap_content"
         android:background="#FFFFFFFF"
         app:labelVisibilityMode="unlabeled"
+        app:itemIconSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_menu" />

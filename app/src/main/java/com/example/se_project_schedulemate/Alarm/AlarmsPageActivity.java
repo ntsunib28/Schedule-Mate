@@ -1,13 +1,19 @@
 package com.example.se_project_schedulemate.Alarm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import com.example.se_project_schedulemate.Assignment.AssignmentActivity;
+import com.example.se_project_schedulemate.Forum.ForumsActivity;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Timestamp;
 import java.util.Vector;
@@ -90,8 +96,29 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarms_page);
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
         init();
     }
+
+    BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener(){
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    if(item.getItemId() == R.id.assignments_menu){
+                        Intent intent = new Intent(AlarmsPageActivity.this, AssignmentActivity.class);
+                        startActivity(intent);
+                    }
+                    else if (item.getItemId() == R.id.forums_menu) {
+                        Intent intent = new Intent(AlarmsPageActivity.this, ForumsActivity.class);
+                        startActivity(intent);
+                    }
+
+                    return true;
+                }
+            };
 
     @Override
     public void onClick(int position) {
