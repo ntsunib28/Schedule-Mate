@@ -37,6 +37,7 @@
                     app:srcCompat="@drawable/profile" />
 
                 <TextView
+                    android:id="@+id/profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -67,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/round_rectangle"
@@ -90,6 +92,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/subHeader1"
                     android:layout_width="325dp"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -106,11 +109,13 @@
                     android:gravity="center" />
 
                 <TextView
+                    android:id="@+id/descClass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:text="Minutes Before" />
                 <TextView
+                    android:id="@+id/subHeader2"
                     android:layout_width="325dp"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -120,6 +125,7 @@
                     android:text="Asignment Reminder" />
 
                 <TextView
+                    android:id="@+id/descAsg1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
@@ -133,12 +139,14 @@
                     android:gravity="center" />
 
                 <TextView
+                    android:id="@+id/descAsg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:text="days" />
 
                 <TextView
+                    android:id="@+id/subHeader3"
                     android:layout_width="325dp"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -148,6 +156,7 @@
                     android:text="Forum Reminder" />
 
                 <TextView
+                    android:id="@+id/descForum1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
@@ -161,6 +170,7 @@
                     android:gravity="center" />
 
                 <TextView
+                    android:id="@+id/descForum2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
@@ -181,6 +191,7 @@
             android:layout_marginStart="30dp">
 
             <TextView
+                android:id="@+id/applyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="APPLY\nSETTINGS"
@@ -213,6 +224,7 @@
                 app:srcCompat="@drawable/logout" />
 
             <TextView
+                android:id="@+id/logoutText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
