@@ -49,20 +49,22 @@
                     android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="0dp"
-                    android:id="@+id/username"
+                    android:fontFamily="@font/josefinsans_regular"
                     android:text="John Doeng"
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/nim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="0dp"
-                    android:id="@+id/nim"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="25069696969"
                     android:textSize="20sp" />
             </LinearLayout>

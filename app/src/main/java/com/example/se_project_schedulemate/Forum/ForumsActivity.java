@@ -27,6 +27,8 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
     RecyclerView rv_forum;
     Vector<Forum> forumList;
 
+    ImageView settingBtn;
+
     private void init(){
         rv_forum = findViewById(R.id.rv_forums);
         forumList = new Vector<>();
@@ -82,7 +84,16 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         init();
-        settingsBtnFunction();
+
+        //Setting btn kanan atas
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForumsActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -90,17 +101,6 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
 
     }
 
-    // Setting button kanan atas
-    public void settingsBtnFunction(){
-        ImageView settingsBtn = findViewById(R.id.settingsBtn);
-        settingsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ForumsActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener(){
