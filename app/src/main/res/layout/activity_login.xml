@@ -51,13 +51,13 @@
         app:srcCompat="@drawable/paswod" />
 
     <EditText
-        android:id="@+id/ltfname"
+        android:id="@+id/ltfemail"
         android:layout_width="235dp"
         android:layout_height="48dp"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="36dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -72,7 +72,7 @@
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/ltfname" />
+        app:layout_constraintTop_toBottomOf="@+id/ltfemail" />
 
     <Button
         android:id="@+id/llogin"
@@ -105,8 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif-light"
-        android:text="Username"
+        android:text="Email"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView9"
@@ -117,7 +116,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif-light"
         android:text="Password"
         android:textSize="18dp"
         android:textStyle="bold"
