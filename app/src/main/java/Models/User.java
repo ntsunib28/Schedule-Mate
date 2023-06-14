@@ -2,17 +2,50 @@ package Models;
 
 public class User {
     //User Data
-    private String user_id;
-    private String nim;
-    private String name;
     private String email;
+    private String gender;
+    private String name;
+    private String nim;
     private String photo;
+    private String user_id;
 
-    public User(String user_id, String nim, String name, String email, String photo) {
-        this.user_id = user_id;
-        this.nim = nim;
-        this.name = name;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNim() {
+        return nim;
+    }
+
+    public void setNim(String nim) {
+        this.nim = nim;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
@@ -24,35 +57,12 @@ public class User {
         this.user_id = user_id;
     }
 
-    public String getNim() {
-        return nim;
-    }
-
-    public void setNim(String nim) {
-        this.nim = nim;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+    public User(String email, String gender, String name, String nim, String photo, String user_id) {
         this.email = email;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
+        this.gender = gender;
+        this.name = name;
+        this.nim = nim;
         this.photo = photo;
+        this.user_id = user_id;
     }
 }

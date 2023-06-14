@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.se_project_schedulemate.Assignment.AssignmentActivity;
 import com.example.se_project_schedulemate.Forum.ForumsActivity;
@@ -17,9 +19,15 @@ import com.example.se_project_schedulemate.Login.Login;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
 import com.example.se_project_schedulemate.SettingsActivity;
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Timestamp;
 import java.util.Vector;
@@ -29,15 +37,18 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     RecyclerView rv_AlarmRecycler;
     Vector<Alarm> alarmList;
     ImageView settingsBtn;
+    TextView username, nim;
+
 
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authListener;
-
-
     FirebaseUser user;
-
+    DatabaseReference databaseReference;
+    String userId, usernameString;
 
     private void init(){
+
+
         rv_AlarmRecycler = (RecyclerView) findViewById(R.id.rv_alarms);
         alarmList = new Vector<>();
 
@@ -111,17 +122,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarms_page);
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        settingsBtn = findViewById(R.id.settingsBtn);
-        settingsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AlarmsPageActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -131,6 +132,43 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             startActivity(intent);
             finish();
         }
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        settingsBtn = findViewById(R.id.settingsBtn);
+
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("user_data").child(userId);
+
+        Log.d("UserData", "USER ID " + userId);
+
+
+        username = findViewById(R.id.username);
+//        username.setText(userId);
+        nim = findViewById(R.id.nim);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                usernameString = dataSnapshot.child("name").getValue().toString();
+                System.out.println("HERE");
+                System.out.println(usernameString);
+                username.setText(usernameString);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AlarmsPageActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         init();
     }
