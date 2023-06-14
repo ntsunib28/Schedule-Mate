@@ -17,7 +17,7 @@
         android:theme="@style/Theme.SE_Project_ScheduleMate"
         tools:targetApi="31">
         <activity
-            android:name=".Login.Login"
+            android:name=".Forum.ForumsActivity"
             android:exported="false"/>
         <activity
             android:name=".SettingsActivity"
@@ -38,7 +38,7 @@
             android:name=".Assignment.AssignmentActivity"
             android:exported="false"/>
         <activity
-            android:name=".Forum.ForumsActivity"
+            android:name=".Login.Login"
             android:exported="true">
 
             <intent-filter>

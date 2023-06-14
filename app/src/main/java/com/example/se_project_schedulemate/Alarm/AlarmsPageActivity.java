@@ -8,12 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.se_project_schedulemate.Assignment.AssignmentActivity;
 import com.example.se_project_schedulemate.Forum.ForumsActivity;
+import com.example.se_project_schedulemate.Login.Login;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
+import com.example.se_project_schedulemate.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.sql.Timestamp;
 import java.util.Vector;
@@ -22,6 +28,14 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
     RecyclerView rv_AlarmRecycler;
     Vector<Alarm> alarmList;
+    ImageView settingsBtn;
+
+    FirebaseAuth auth;
+    FirebaseAuth.AuthStateListener authListener;
+
+
+    FirebaseUser user;
+
 
     private void init(){
         rv_AlarmRecycler = (RecyclerView) findViewById(R.id.rv_alarms);
@@ -99,6 +113,24 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        settingsBtn = findViewById(R.id.settingsBtn);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AlarmsPageActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
+        }
 
         init();
     }

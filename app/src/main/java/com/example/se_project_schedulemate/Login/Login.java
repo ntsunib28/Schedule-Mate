@@ -18,22 +18,28 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener authListener;
+    private FirebaseDatabase myFirebaseDatabase;
+    private DatabaseReference myDatabaseReference;
+
     ProgressBar progressBar;
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = auth.getCurrentUser();
-//        if(currentUser != null){
-//            Intent intent = new Intent(Login.this, AlarmsPageActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(Login.this, AlarmsPageActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 
 
     @Override
@@ -88,10 +94,14 @@ public class Login extends AppCompatActivity {
                         });
             }
         });
+
     }
 
     private void setupFirebaseAuth(){
         auth = FirebaseAuth.getInstance();
+        myFirebaseDatabase = FirebaseDatabase.getInstance();
+        myDatabaseReference = myFirebaseDatabase.getReference();
+
 
     }
 
