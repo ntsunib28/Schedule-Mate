@@ -125,12 +125,12 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarms_page);
 
-//        Bottom NavBar
+        //        Bottom NavBar
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
 
-//Setting dipencet
+        //Setting dipencet
         settingsBtn = findViewById(R.id.settingsBtn);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,8 +141,8 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         });
 
 
-//FIREBASE
-//        Usernya logged in apa engga
+        //FIREBASE
+        //        Usernya logged in apa engga
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
@@ -151,7 +151,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             startActivity(intent);
             finish();
         }
-// Ambil data user
+        // Ambil data user
 
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference();
@@ -174,7 +174,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             }
         });
 
-//INIT
+        //INIT
         username = findViewById(R.id.username);
         nim = findViewById(R.id.nim);
         init();
