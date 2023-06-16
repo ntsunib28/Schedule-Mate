@@ -46,11 +46,8 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     FirebaseAuth.AuthStateListener authListener;
     FirebaseUser user;
     // Ini tes langsung pake url
-    FirebaseDatabase mDatabase;
-    DatabaseReference mReference;
-    final FirebaseDatabase mDatabase2 = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
-    DatabaseReference mReference2 = mDatabase2.getReference();
-    String userId, usernameString;
+    final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
+    DatabaseReference mReference = mDatabase.getReference();
 
     public void viewAlarmDetails(int position) {
         String alarmTitle = alarmList.get(position).getAlarmTitle();
@@ -79,7 +76,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         rv_AlarmRecycler = (RecyclerView) findViewById(R.id.rv_alarms);
         alarmList = new Vector<>();
 
-        mReference2 = mDatabase2.getReference("class_schedule/LA01/la01_software_engineering/");
+        mReference = mDatabase.getReference("class_schedule/LA01/la01_software_engineering/Session 4");
 
         alarmList.add(new Alarm(
                 "Bukan dari Firebase",
@@ -96,22 +93,19 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         rv_AlarmRecycler.setLayoutManager(new LinearLayoutManager(this));
 
 
-        mReference2.addValueEventListener(new ValueEventListener() {
+        mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for(DataSnapshot _snapshot: snapshot.getChildren()) {
-                    AlarmObject TempAlarm = _snapshot.getValue(AlarmObject.class);
+                AlarmObject TempAlarm = snapshot.getValue(AlarmObject.class);
 
-                    alarmList.add(new Alarm(
-                            TempAlarm.getTitle().toString(),
-                            TempAlarm.createAlarmActivation(),
-                            TempAlarm.getDescription(),
-                            TempAlarm.createScheduleStartTime(),
-                            TempAlarm.createScheduleEndTime()
-                    ));
-                }
-
+                alarmList.add(new Alarm(
+                        TempAlarm.getTitle().toString(),
+                        TempAlarm.createAlarmActivation(),
+                        TempAlarm.getDescription(),
+                        TempAlarm.createScheduleStartTime(),
+                        TempAlarm.createScheduleEndTime()
+                ));
                 adapter.notifyDataSetChanged();
             }
 
@@ -154,28 +148,6 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             startActivity(intent);
             finish();
         }
-        // Ambil data user
-
-        mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference();
-
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Log.d("UserData", "USER ID " + userId);
-
-
-
-
-        mReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user1 = dataSnapshot.getValue(User.class);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         //INIT
         username = findViewById(R.id.username);

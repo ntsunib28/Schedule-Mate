@@ -2,6 +2,8 @@ package com.example.se_project_schedulemate.Models;
 
 public class User {
     //User Data
+    private String class_group;
+
     private String email;
     private String gender;
     private String name;
@@ -57,12 +59,20 @@ public class User {
         this.user_id = user_id;
     }
 
-    public User(String email, String gender, String name, String nim, String photo, String user_id) {
-        this.email = email;
-        this.gender = gender;
-        this.name = name;
-        this.nim = nim;
-        this.photo = photo;
-        this.user_id = user_id;
+    public String getClass_group() {
+        return class_group;
     }
+
+    public void setClass_group(String class_group) {
+        this.class_group = class_group;
+    }
+
+//    public User(String email, String gender, String name, String nim, String photo, String user_id) {
+//        this.email = email;
+//        this.gender = gender;
+//        this.name = name;
+//        this.nim = nim;
+//        this.photo = photo;
+//        this.user_id = user_id;
+//    }
 }

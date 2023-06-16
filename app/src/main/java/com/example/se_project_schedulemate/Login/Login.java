@@ -5,24 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.se_project_schedulemate.Alarm.Alarm;
+import com.example.se_project_schedulemate.Alarm.AlarmObject;
 import com.example.se_project_schedulemate.Alarm.AlarmsPageActivity;
+import com.example.se_project_schedulemate.Models.User;
 import com.example.se_project_schedulemate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth auth;
+    private DatabaseReference mReference;
+    final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
     ProgressBar progressBar;
 
@@ -45,6 +54,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
+
 
         Button buttonLogin = findViewById(R.id.llogin);
         EditText ltfemail = findViewById(R.id.ltfemail);
@@ -74,12 +84,29 @@ public class Login extends AppCompatActivity {
 
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     progressBar.setVisibility(View.VISIBLE);
-                                    Toast.makeText(getApplicationContext(), "Welcome " + email, Toast.LENGTH_SHORT).show();
+
+//                                    FIREBASE
+                                    mReference = mDatabase.getReference().child("user_data").child(auth.getUid());
+//                                    END
+                                    mReference.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            User userTemp = snapshot.getValue(User.class);
+                                            Toast.makeText(getApplicationContext(), "Welcome " + userTemp.getName(), Toast.LENGTH_SHORT).show();
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                        }
+                                    });
+
+
                                     Intent intent = new Intent(Login.this, AlarmsPageActivity.class);
                                     startActivity(intent);
                                     finish();
