@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     FirebaseUser user;
-    CardView logoutBtn;
+    CardView logoutBtn, applySettings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +30,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-
-        logoutBtn = findViewById(R.id.logoutBtn);
 
         if (user == null){
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -42,12 +40,22 @@ public class SettingsActivity extends AppCompatActivity {
 //            username.setText(user.getEmail());
 //        }
 
+        logoutBtn = findViewById(R.id.logoutBtn);
+        applySettings = findViewById(R.id.applySettings);
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        applySettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });
