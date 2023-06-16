@@ -84,6 +84,7 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        bottomNav.setSelectedItemId(R.id.forums_menu);
 
         //Setting btn kanan atas
         settingBtn.setOnClickListener(new View.OnClickListener() {

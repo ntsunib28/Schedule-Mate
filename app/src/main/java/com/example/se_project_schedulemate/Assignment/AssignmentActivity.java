@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.se_project_schedulemate.Alarm.AlarmsPageActivity;
@@ -72,6 +73,7 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        bottomNav.setSelectedItemId(R.id.assignments_menu);
 
         init();
     }
@@ -96,6 +98,7 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
     @Override
     public void onClick(int position) {
         Toast.makeText(this, assignmentVector.get(position).getAssignmentName(), Toast.LENGTH_SHORT).show();
+        viewAsgDetails(position);
     }
 
 }

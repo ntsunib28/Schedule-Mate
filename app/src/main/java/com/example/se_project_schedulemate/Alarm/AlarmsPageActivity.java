@@ -19,7 +19,6 @@ import com.example.se_project_schedulemate.Login.Login;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
 import com.example.se_project_schedulemate.SettingsActivity;
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.sql.Timestamp;
 import java.util.Vector;
 
-import Models.User;
+import com.example.se_project_schedulemate.Models.User;
 
 public class AlarmsPageActivity extends AppCompatActivity implements MyInterface {
 
@@ -128,6 +127,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         //        Bottom NavBar
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        bottomNav.setSelectedItemId(R.id.alarms_menu);
 
 
         //Setting dipencet

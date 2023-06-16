@@ -1,4 +1,4 @@
-package Models;
+package com.example.se_project_schedulemate.Models;
 
 public class User {
     //User Data
