@@ -14,89 +14,49 @@
         android:orientation="vertical" >
 
     <!--Profile-->
-        <androidx.cardview.widget.CardView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner_bottom"
-            app:cardCornerRadius="20dp"
             android:layout_column="1">
-
-            <LinearLayout
+            <ImageView
+                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="-30dp">
+                android:layout_height="74dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/rounded_top" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginEnd="30dp"
-                    app:srcCompat="@drawable/profile" />
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="36dp"
+                android:layout_height="45dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/back_icon" />
 
-                <LinearLayout
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="0dp"
-                        android:text="John Doeng"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="0dp"
-                        android:text="25069696969"
-                        android:textSize="20sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    app:srcCompat="@drawable/setting" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-<!--Settings-->
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            app:cardCornerRadius="30dp"
-            android:layout_column="1">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/header"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/round_rectangle"
-                android:gravity="center"
-                android:text="Settings" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:id="@+id/asgDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/josefinsans_bold"
+                android:text="Settings"
+                android:textSize="28dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--Number Picker-->
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="-5dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/settings_backgrouncard"
             app:cardCornerRadius="15dp"
             android:layout_column="1">

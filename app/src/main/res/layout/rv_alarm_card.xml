@@ -11,7 +11,8 @@
     android:padding="0dp"
     android:paddingTop="0dp"
     android:paddingBottom="0dp"
-    app:cardBackgroundColor="#FFFFFF">
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

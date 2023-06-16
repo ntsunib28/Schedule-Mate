@@ -65,7 +65,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvAssignmentName = itemView.findViewById(R.id.tvAsignmentName);
+            tvAssignmentName = itemView.findViewById(R.id.tvAssignmentName);
             tvNotification = itemView.findViewById(R.id.tvNotification);
             tvSession = itemView.findViewById(R.id.tvSession);
             tvLecturer = itemView.findViewById(R.id.tvLecturer);

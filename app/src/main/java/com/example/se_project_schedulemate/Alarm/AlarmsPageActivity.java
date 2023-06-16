@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.se_project_schedulemate.Assignment.AssignmentActivity;
 import com.example.se_project_schedulemate.Forum.ForumsActivity;
@@ -47,6 +48,25 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     FirebaseDatabase mDatabase;
     DatabaseReference mReference;
     String userId, usernameString;
+
+//    public void viewAlarmDetails(int position) {
+//        String assignmentTitle = assignmentVector.get(position).getAssignmentName();
+//        Integer deadlineYear = assignmentVector.get(position).getDeadline().getYear();
+//        Integer deadlineMonth = assignmentVector.get(position).getDeadline().getMonth();
+//        Integer deadlineDay = assignmentVector.get(position).getDeadline().getDate();
+//        Integer deadlineHour = assignmentVector.get(position).getDeadline().getHours();
+//        Integer deadlineMinute = assignmentVector.get(position).getDeadline().getMinutes();
+//
+//
+//        Intent intentAsgDetail = new Intent(this, AssignmentDetail.class);
+//        intentAsgDetail.putExtra("Title", assignmentTitle);
+//        intentAsgDetail.putExtra("Deadline Year", deadlineYear);
+//        intentAsgDetail.putExtra("Deadline Month", deadlineMonth);
+//        intentAsgDetail.putExtra("Deadline Day", deadlineDay);
+//        intentAsgDetail.putExtra("Deadline Hour", deadlineHour);
+//        intentAsgDetail.putExtra("Deadline Minute", deadlineMinute);
+//        startActivity(intentAsgDetail);
+//    }
 
     private void init(){
 
@@ -199,6 +219,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
     @Override
     public void onClick(int position) {
-
+        Toast.makeText(this, alarmList.get(position).getAlarmTitle(), Toast.LENGTH_SHORT).show();
+//        viewAlarmDetails(position);
     }
 }

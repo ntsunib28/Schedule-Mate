@@ -1,64 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="350dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/rounded_corner"-->
+<!--        android:orientation="vertical">-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvAsignmentName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/rounded_corner_top_green3"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Assignment GSLC 2"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textFontWeight="500"-->
+<!--            android:textSize="24dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvNotification"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="500"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Notification: "-->
+<!--            android:textSize="18dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvSession"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Session "-->
+<!--            android:textSize="18dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvLecturer"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Lecturer 101"-->
+<!--            android:textSize="18dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvDeadline"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Deadline: "-->
+<!--            android:textColor="#FF0000"-->
+<!--            android:textSize="18dp" />-->
+
+
+<!--    </LinearLayout>-->
+
+<!--</androidx.cardview.widget.CardView>-->
+
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_asgCard"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#00FFFFFF"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/itembox_putih"
+    android:backgroundTint="@color/white"
+    android:padding="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp">
 
-    <LinearLayout
-        android:layout_width="350dp"
+<LinearLayout
+    android:layout_width="324dp"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:divider="@drawable/emptydivider"
+    android:dividerPadding="10dp"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+
+    <TextView
+        android:id="@+id/tvAssignmentName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corner"
-        android:orientation="vertical">
+        android:text="Assignment GSLC 2"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvNotification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification: "
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvSession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Session "
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvLecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lecturer 101"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvDeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deadline: "
+                android:textColor="#FF0000"/>
 
 
-        <TextView
-            android:id="@+id/tvAsignmentName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner_top_green3"
-            android:padding="5dp"
-            android:text="Assignment GSLC 2"
-            android:textAlignment="center"
-            android:textFontWeight="500"
-            android:textSize="24dp" />
 
-        <TextView
-            android:id="@+id/tvNotification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="500"
-            android:padding="5dp"
-            android:text="Notification: "
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/tvSession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Session "
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/tvLecturer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Lecturer 101"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/tvDeadline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Deadline: "
-            android:textColor="#FF0000"
-            android:textSize="18dp" />
-
-
-    </LinearLayout>
+</LinearLayout>
 
 </androidx.cardview.widget.CardView>

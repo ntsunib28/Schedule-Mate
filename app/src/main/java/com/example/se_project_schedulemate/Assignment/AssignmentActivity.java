@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.se_project_schedulemate.Alarm.AlarmsPageActivity;
 import com.example.se_project_schedulemate.Forum.ForumsActivity;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
+import com.example.se_project_schedulemate.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Timestamp;
@@ -23,6 +25,7 @@ import java.util.Vector;
 public class AssignmentActivity extends AppCompatActivity implements MyInterface {
     RecyclerView rv_Assignment;
     Vector<Assignment> assignmentVector;
+    ImageView settingsBtn;
 
     public void init(){
         rv_Assignment = findViewById(R.id.rv_Assignment);
@@ -47,25 +50,6 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
         rv_Assignment.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void viewAsgDetails(int position) {
-        String assignmentTitle = assignmentVector.get(position).getAssignmentName();
-        Integer deadlineYear = assignmentVector.get(position).getDeadline().getYear();
-        Integer deadlineMonth = assignmentVector.get(position).getDeadline().getMonth();
-        Integer deadlineDay = assignmentVector.get(position).getDeadline().getDate();
-        Integer deadlineHour = assignmentVector.get(position).getDeadline().getHours();
-        Integer deadlineMinute = assignmentVector.get(position).getDeadline().getMinutes();
-
-
-        Intent intentAsgDetail = new Intent(this, AssignmentDetail.class);
-        intentAsgDetail.putExtra("Title", assignmentTitle);
-        intentAsgDetail.putExtra("Deadline Year", deadlineYear);
-        intentAsgDetail.putExtra("Deadline Month", deadlineMonth);
-        intentAsgDetail.putExtra("Deadline Day", deadlineDay);
-        intentAsgDetail.putExtra("Deadline Hour", deadlineHour);
-        intentAsgDetail.putExtra("Deadline Minute", deadlineMinute);
-        startActivity(intentAsgDetail);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +60,16 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
         bottomNav.setSelectedItemId(R.id.assignments_menu);
 
         init();
+
+        //Setting dipencet
+        settingsBtn = findViewById(R.id.settingsBtn);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AssignmentActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -97,8 +91,6 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
 
     @Override
     public void onClick(int position) {
-        Toast.makeText(this, assignmentVector.get(position).getAssignmentName(), Toast.LENGTH_SHORT).show();
-        viewAsgDetails(position);
     }
 
 }

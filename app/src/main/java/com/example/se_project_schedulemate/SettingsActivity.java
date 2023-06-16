@@ -23,6 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     FirebaseUser user;
     CardView logoutBtn, applySettings;
+    ImageView backBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         logoutBtn = findViewById(R.id.logoutBtn);
         applySettings = findViewById(R.id.applySettings);
+        backBtn = findViewById(R.id.backBtn);
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +56,13 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         applySettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();

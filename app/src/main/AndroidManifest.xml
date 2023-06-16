@@ -29,9 +29,6 @@
             android:name=".Alarm.AlarmsPageActivity"
             android:exported="false" />
         <activity
-            android:name=".Assignment.AssignmentDetail"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
