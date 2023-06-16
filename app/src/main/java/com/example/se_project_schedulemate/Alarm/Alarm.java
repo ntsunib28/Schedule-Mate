@@ -13,9 +13,9 @@ public class Alarm {
     private Timestamp scheduleEndTime;
 
     public Alarm(String alarmTitle, Timestamp alarmActivation, String alarmDescription, Timestamp scheduleStartTime, Timestamp scheduleEndTime) {
-        AlarmTitle = alarmTitle;
-        AlarmActivation = alarmActivation;
-        AlarmDescription = alarmDescription;
+        this.AlarmTitle = alarmTitle;
+        this.AlarmActivation = alarmActivation;
+        this.AlarmDescription = alarmDescription;
         this.scheduleStartTime = scheduleStartTime;
         this.scheduleEndTime = scheduleEndTime;
     }
