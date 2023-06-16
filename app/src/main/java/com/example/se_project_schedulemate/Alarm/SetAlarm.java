@@ -10,6 +10,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -23,12 +25,23 @@ import java.util.Date;
 public class SetAlarm extends AppCompatActivity {
     private TimePicker timePicker;
     private Button saveAlarm;
+
+
+    ImageView backBtn;
+    TextView tvSession, tvClassName;
 //    private EditText edit = (EditText) findViewById(R.id.alarmName);
 //    public static String alarmName;
     private int hour, minutes;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_alarm_activity);
+
+        backBtn = findViewById(R.id.backBtn);
+
+        tvClassName = findViewById(R.id.tvClassName);
+        tvSession = findViewById(R.id.tvSession);
+        tvClassName.setText(getIntent().getStringExtra("Title"));
+        tvSession.setText(getIntent().getStringExtra("Description"));
 
         timePicker = findViewById(R.id.timePicker);
         saveAlarm = findViewById(R.id.saveAlarm);
@@ -47,6 +60,12 @@ public class SetAlarm extends AppCompatActivity {
                 Toast.makeText(SetAlarm.this, "Set Alarm " + hour + ": "+ minutes, Toast.LENGTH_SHORT).show();
                 setTimer();
                 notification();
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

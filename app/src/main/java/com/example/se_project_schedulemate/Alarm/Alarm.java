@@ -4,44 +4,44 @@ import java.sql.Timestamp;
 
 public class Alarm {
 
-    private String AlarmTitle;
+    private String alarmTitle;
 
-    private Timestamp AlarmActivation;
+    private Timestamp alarmActivation;
 
-    private String AlarmDescription;
+    private String alarmDescription;
     private Timestamp scheduleStartTime;
     private Timestamp scheduleEndTime;
 
     public Alarm(String alarmTitle, Timestamp alarmActivation, String alarmDescription, Timestamp scheduleStartTime, Timestamp scheduleEndTime) {
-        this.AlarmTitle = alarmTitle;
-        this.AlarmActivation = alarmActivation;
-        this.AlarmDescription = alarmDescription;
+        this.alarmTitle = alarmTitle;
+        this.alarmActivation = alarmActivation;
+        this.alarmDescription = alarmDescription;
         this.scheduleStartTime = scheduleStartTime;
         this.scheduleEndTime = scheduleEndTime;
     }
 
     public String getAlarmTitle() {
-        return AlarmTitle;
+        return alarmTitle;
     }
 
     public void setAlarmTitle(String alarmTitle) {
-        AlarmTitle = alarmTitle;
+        alarmTitle = alarmTitle;
     }
 
     public Timestamp getAlarmActivation() {
-        return AlarmActivation;
+        return alarmActivation;
     }
 
     public void setAlarmActivation(Timestamp alarmActivation) {
-        AlarmActivation = alarmActivation;
+        alarmActivation = alarmActivation;
     }
 
     public String getAlarmDescription() {
-        return AlarmDescription;
+        return alarmDescription;
     }
 
     public void setAlarmDescription(String alarmDescription) {
-        AlarmDescription = alarmDescription;
+        alarmDescription = alarmDescription;
     }
 
     public Timestamp getScheduleStartTime() {

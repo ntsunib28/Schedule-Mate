@@ -45,12 +45,31 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authListener;
     FirebaseUser user;
-    FirebaseDatabase mDatabase;
-    DatabaseReference mReference;
     // Ini tes langsung pake url
-    final FirebaseDatabase mDatabase2 = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
-    DatabaseReference mReference2 = mDatabase2.getReference();
+    final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
+    DatabaseReference mReference = mDatabase.getReference();
     String userId, usernameString;
+
+    public void viewAlarmDetails(int position) {
+        String alarmTitle = alarmList.get(position).getAlarmTitle();
+        String alarmDesc = alarmList.get(position).getAlarmDescription();
+//        Integer deadlineYear = assignmentVector.get(position).getDeadline().getYear();
+//        Integer deadlineMonth = assignmentVector.get(position).getDeadline().getMonth();
+//        Integer deadlineDay = assignmentVector.get(position).getDeadline().getDate();
+//        Integer deadlineHour = assignmentVector.get(position).getDeadline().getHours();
+//        Integer deadlineMinute = assignmentVector.get(position).getDeadline().getMinutes();
+
+
+        Intent intentAsgDetail = new Intent(this, SetAlarm.class);
+        intentAsgDetail.putExtra("Title", alarmTitle);
+        intentAsgDetail.putExtra("Description", alarmDesc);
+//        intentAsgDetail.putExtra("Deadline Year", deadlineYear);
+//        intentAsgDetail.putExtra("Deadline Month", deadlineMonth);
+//        intentAsgDetail.putExtra("Deadline Day", deadlineDay);
+//        intentAsgDetail.putExtra("Deadline Hour", deadlineHour);
+//        intentAsgDetail.putExtra("Deadline Minute", deadlineMinute);
+        startActivity(intentAsgDetail);
+    }
 
     private void init(){
 
@@ -58,7 +77,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         rv_AlarmRecycler = (RecyclerView) findViewById(R.id.rv_alarms);
         alarmList = new Vector<>();
 
-        mReference2 = mDatabase2.getReference("class_schedule/LA01/la01_software_engineering/Session 4");
+        mReference = mDatabase.getReference("class_schedule/LA01/la01_software_engineering/Session 4");
 
         alarmList.add(new Alarm(
                 "Bukan dari Firebase",
@@ -75,7 +94,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         rv_AlarmRecycler.setLayoutManager(new LinearLayoutManager(this));
 
 
-        mReference2.addValueEventListener(new ValueEventListener() {
+        mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -130,28 +149,6 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             startActivity(intent);
             finish();
         }
-        // Ambil data user
-
-        mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference();
-
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Log.d("UserData", "USER ID " + userId);
-
-
-
-
-        mReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user1 = dataSnapshot.getValue(User.class);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         //INIT
         username = findViewById(R.id.username);
@@ -179,6 +176,6 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     @Override
     public void onClick(int position) {
         Toast.makeText(this, alarmList.get(position).getAlarmTitle(), Toast.LENGTH_SHORT).show();
-//        viewAlarmDetails(position);
+        viewAlarmDetails(position);
     }
 }
