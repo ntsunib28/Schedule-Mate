@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     FirebaseUser user;
-    ImageView logoutBtn;
+    CardView logoutBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

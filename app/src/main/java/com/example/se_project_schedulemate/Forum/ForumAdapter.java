@@ -41,7 +41,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ForumAdapter.ViewHolder holder, int position) {
 
-        Timestamp dedline = forumItems.get(position).getForumDeadline();
+        Timestamp deadline = forumItems.get(position).getForumDeadline();
 
         holder.tvForumName.setText(forumItems.get(position).getForumTitle());
         holder.tvSessionName.setText(forumItems.get(position).getForumSession());
@@ -49,8 +49,9 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder>{
 
 
 
-        String deadlineTime = String.format("%d %s %d - %02d.%02d", dedline.getDate(), getMonth(dedline.getMonth()), dedline.getYear(),
-                                    dedline.getHours(), dedline.getMinutes());
+        String deadlineTime = String.format("%d %s %d - %02d.%02d", deadline.getDate(),
+                getMonthName(deadline.getMonth()), deadline.getYear(),
+                                    deadline.getHours(), deadline.getMinutes());
 
         holder.tvDeadline.setText("DEADLINE  : " + deadlineTime);
 
@@ -83,7 +84,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder>{
 
     }
 
-    public String getMonth (int monthIndex){
+    public String getMonthName (int monthIndex){
 
         String returnString = null;
 

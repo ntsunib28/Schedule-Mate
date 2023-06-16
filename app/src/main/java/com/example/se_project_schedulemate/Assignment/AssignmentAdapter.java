@@ -62,7 +62,6 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
         //sesuaiin sama komponen yg ada di rv building xml
         TextView tvAssignmentName, tvNotification, tvSession,
                 tvLecturer, tvDeadline;
-        ImageView ivBuilding;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

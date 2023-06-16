@@ -23,9 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth auth;
-    private FirebaseAuth.AuthStateListener authListener;
-    private FirebaseDatabase myFirebaseDatabase;
-    private DatabaseReference myDatabaseReference;
 
     ProgressBar progressBar;
 
@@ -94,14 +91,6 @@ public class Login extends AppCompatActivity {
                         });
             }
         });
-
-    }
-
-    private void setupFirebaseAuth(){
-        auth = FirebaseAuth.getInstance();
-        myFirebaseDatabase = FirebaseDatabase.getInstance();
-        myDatabaseReference = myFirebaseDatabase.getReference();
-
 
     }
 

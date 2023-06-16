@@ -8,7 +8,6 @@ public class Forum {
 
     private String forumTitle, forumSession, forumLecturer;
     private Timestamp forumDeadline;
-    ImageView settingsBtn;
 
     public Forum(String forumTitle, String forumSession, String forumLecturer, Timestamp forumDeadline) {
         this.forumTitle = forumTitle;

@@ -32,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.sql.Timestamp;
 import java.util.Vector;
 
+import Models.User;
+
 public class AlarmsPageActivity extends AppCompatActivity implements MyInterface {
 
     RecyclerView rv_AlarmRecycler;
@@ -43,7 +45,8 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authListener;
     FirebaseUser user;
-    DatabaseReference databaseReference;
+    FirebaseDatabase mDatabase;
+    DatabaseReference mReference;
     String userId, usernameString;
 
     private void init(){
@@ -122,46 +125,13 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarms_page);
 
-
-
-        auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
-
-        if (user == null){
-            Intent intent = new Intent(getApplicationContext(), Login.class);
-            startActivity(intent);
-            finish();
-        }
-
+//        Bottom NavBar
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
+
+//Setting dipencet
         settingsBtn = findViewById(R.id.settingsBtn);
-
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("user_data").child(userId);
-
-        Log.d("UserData", "USER ID " + userId);
-
-
-        username = findViewById(R.id.username);
-//        username.setText(userId);
-        nim = findViewById(R.id.nim);
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                usernameString = dataSnapshot.child("name").getValue().toString();
-                System.out.println("HERE");
-                System.out.println(usernameString);
-                username.setText(usernameString);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +140,43 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             }
         });
 
+
+//FIREBASE
+//        Usernya logged in apa engga
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
+        }
+// Ambil data user
+
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference();
+
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Log.d("UserData", "USER ID " + userId);
+
+
+
+
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user1 = dataSnapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+//INIT
+        username = findViewById(R.id.username);
+        nim = findViewById(R.id.nim);
         init();
     }
 

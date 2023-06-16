@@ -80,10 +80,10 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forums);
 
+        settingBtn = findViewById(R.id.settingsBtn);
+
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-
-        init();
 
         //Setting btn kanan atas
         settingBtn.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +94,8 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
             }
         });
 
+
+        init();
     }
 
     @Override
