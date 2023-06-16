@@ -9,15 +9,6 @@ public class AlarmObject {
     private Long Year, Month, Day, Hour, Minute;
     private Long EndHour, EndMinute;
     private String Title;
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
     private String Description;
 
 //    public AlarmObject(int Year, int Month, int Day, int Hour, int Minute, int EndHour, int EndMinute, String Title) {
@@ -32,71 +23,71 @@ public class AlarmObject {
 //    }
 
     public Timestamp createAlarmActivation() {
-        return new Timestamp(getYear(), getMonth(), getDay(), getHour(), getMinute(), 0 ,0);
+        return new Timestamp(Math.toIntExact(getYear()), Math.toIntExact(getMonth()), Math.toIntExact(getDay()), Math.toIntExact(getHour()), Math.toIntExact(getMinute()), 0 ,0);
     }
 
     public Timestamp createScheduleStartTime(){
-        return new Timestamp(0, 0, 0, getHour(), getMinute(), 0, 0);
+        return new Timestamp(0, 0, 0, Math.toIntExact(getHour()), Math.toIntExact(getMinute()), 0, 0);
     }
 
     public Timestamp createScheduleEndTime() {
-        return new Timestamp(0, 0, 0, getEndHour(), getEndMinute(), 0, 0);
+        return new Timestamp(0, 0, 0, Math.toIntExact(getEndHour()), Math.toIntExact(getEndMinute()), 0, 0);
     }
 
-    public int getYear() {
-        return Math.toIntExact(Year);
+    public Long getYear() {
+        return Year;
     }
 
-    public void setYear(int year) {
-        Year = Long.valueOf(year);
+    public void setYear(Long year) {
+        Year = year;
     }
 
-    public int getMonth() {
-        return Math.toIntExact(Month);
+    public Long getMonth() {
+        return Month;
     }
 
-    public void setMonth(int month) {
-        Month = Long.valueOf(month);
+    public void setMonth(Long month) {
+        Month = month;
     }
 
-    public int getDay() {
-        return Math.toIntExact(Day);
+    public Long getDay() {
+        return Day;
     }
 
-    public void setDay(int day) {
-        Day = Long.valueOf(day);
+    public void setDay(Long day) {
+        Day = day;
     }
 
-    public int getHour() {
-        return Math.toIntExact(Hour);
+    public Long getHour() {
+        return Hour;
     }
 
-    public void setHour(int hour) {
-        Hour = Long.valueOf(hour);
+    public void setHour(Long hour) {
+        Hour = hour;
     }
 
-    public int getMinute() {
-        return Math.toIntExact(Minute);
+    public Long getMinute() {
+        return Minute;
     }
 
-    public void setMinute(int minute) {
-        Minute = Long.valueOf(minute);
+    public void setMinute(Long minute) {
+        Minute = minute;
     }
 
-    public int getEndHour() {
-        return Math.toIntExact(EndHour);
+    public Long getEndHour() {
+        return EndHour;
     }
 
-    public void setEndHour(int endHour) {
-        EndHour = Long.valueOf(endHour);
+    public void setEndHour(Long endHour) {
+        EndHour = endHour;
     }
 
-    public int getEndMinute() {
-        return Math.toIntExact(EndMinute);
+    public Long getEndMinute() {
+        return EndMinute;
     }
 
-    public void setEndMinute(int endMinute) {
-        EndMinute = Long.valueOf(endMinute);
+    public void setEndMinute(Long endMinute) {
+        EndMinute = endMinute;
     }
 
     public String getTitle() {
@@ -107,4 +98,11 @@ public class AlarmObject {
         Title = title;
     }
 
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
 }
