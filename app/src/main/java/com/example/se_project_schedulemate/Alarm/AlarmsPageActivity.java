@@ -178,30 +178,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         });
         // End read id siswa per kelas
 
-//        mReference = mDatabase.getReference("class_schedule/LA01/la01_software_engineering/");
 
-//        mReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                for(DataSnapshot _snapshot: snapshot.getChildren()) {
-//                    AlarmObject TempAlarm = _snapshot.getValue(AlarmObject.class);
-//
-//                    alarmList.add(new Alarm(
-//                            TempAlarm.getTitle().toString(),
-//                            TempAlarm.createAlarmActivation(),
-//                            TempAlarm.getDescription(),
-//                            TempAlarm.createScheduleStartTime(),
-//                            TempAlarm.createScheduleEndTime()
-//                    ));
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
 
     }
 

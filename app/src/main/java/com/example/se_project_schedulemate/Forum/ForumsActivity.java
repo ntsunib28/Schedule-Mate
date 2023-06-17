@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.se_project_schedulemate.Alarm.Alarm;
+import com.example.se_project_schedulemate.Alarm.AlarmObject;
 import com.example.se_project_schedulemate.Alarm.AlarmsPageActivity;
 import com.example.se_project_schedulemate.Assignment.AssignmentActivity;
 import com.example.se_project_schedulemate.Models.User;
@@ -21,6 +24,7 @@ import com.example.se_project_schedulemate.R;
 import com.example.se_project_schedulemate.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +32,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class ForumsActivity extends AppCompatActivity implements MyInterface {
@@ -40,50 +46,102 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
     private DatabaseReference mReference;
     final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
-
+    boolean addTo = false;
     private void init(){
         rv_forum = findViewById(R.id.rv_forums);
         forumList = new Vector<>();
-
-        forumList.add(new Forum(
-                "LEC - Software Engineering",
-                "Session 7",
-                "Lecturer 101",
-                new Timestamp(2023, 1, 12, 9, 0, 0, 0)
-        ));
-
-        forumList.add(new Forum(
-                "LEC - Software Engineering",
-                "Session 7",
-                "Lecturer 101",
-                new Timestamp(2023, 2, 12, 9, 0, 0, 0)
-        ));
-
-        forumList.add(new Forum(
-                "LEC - Software Engineering",
-                "Session 7",
-                "Lecturer 101",
-                new Timestamp(2023, 3, 12, 9, 0, 0, 0)
-        ));
-
-        forumList.add(new Forum(
-                "LEC - Software Engineering",
-                "Session 7",
-                "Lecturer 101",
-                new Timestamp(2023, 4, 12, 9, 0, 0, 0)
-        ));
-
-        forumList.add(new Forum(
-                "LEC - Software Engineering",
-                "Session 7",
-                "Lecturer 101",
-                new Timestamp(2023, 3, 12, 9, 0, 0, 0)
-        ));
 
         ForumAdapter adapter = new ForumAdapter(this, this);
         adapter.setForumAdapterItems(forumList);
         rv_forum.setAdapter(adapter);
         rv_forum.setLayoutManager(new LinearLayoutManager(this));
+
+        DatabaseReference tempReference = mDatabase.getReference("class_groups");
+        List<String> classes_list = new ArrayList<String>();
+        List<String> user_class = new ArrayList<String>();
+        tempReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot _snapshot: snapshot.getChildren()) {
+                    String tempAdd = _snapshot.getKey().toString();
+                    classes_list.add(tempAdd);
+                    Log.d("Kelas Read wait", _snapshot.getKey());
+                }
+
+                for(int ii = 0; ii < classes_list.size(); ii++){
+                    addTo = false;
+                    String kelas = classes_list.get(ii);
+                    DatabaseReference tempReference2 = mDatabase.getReference("class_groups/" + kelas + "/students/");
+                    tempReference2.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            String userID = auth.getUid();
+                            for(DataSnapshot _snapshot: snapshot.getChildren()) {
+                                // if id user muncul disini,
+                                // THEN
+                                // add Kelas.
+                                if(userID.compareTo(_snapshot.getKey()) == 0){
+                                    addTo = true;
+//                                   user_class.add(kelas);
+                                    Log.d("snapshot gc found", _snapshot.getKey());
+                                    Log.d("snapshot gc found", kelas + "added");
+                                    break;
+                                } else {
+                                    addTo = false;
+                                    Log.d("snapshot gc", "ganemu in " + kelas );
+                                    Log.d("snapshot gc", _snapshot.getKey());
+                                    Log.d("snapshot gc", userID);
+                                }
+
+                            }
+
+                            if(addTo == true){
+                                mReference = mDatabase.getReference("forums/" + kelas + "/");
+                                mReference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                        for(DataSnapshot _snapshot: snapshot.getChildren()) {
+
+                                            for(DataSnapshot _snapshot2 : _snapshot.getChildren()){
+                                                ForumObject TempForum = _snapshot2.getValue(ForumObject.class);
+
+                                                forumList.add(new Forum(
+                                                        TempForum.getTitle(),
+                                                        TempForum.getDescription(),
+                                                        TempForum.getLecturer_id(),
+                                                        TempForum.createDeadline()
+                                                ));
+                                            }
+                                        }
+                                        adapter.notifyDataSetChanged();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                    }
+                                });
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
@@ -108,7 +166,7 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
         });
 
 
-        init();
+
 
         //        FIREBASE
         auth = FirebaseAuth.getInstance();
@@ -129,6 +187,8 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        init();
     }
 
     BottomNavigationView.OnNavigationItemSelectedListener navListener =
