@@ -76,7 +76,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         rv_AlarmRecycler = (RecyclerView) findViewById(R.id.rv_alarms);
         alarmList = new Vector<>();
 
-        mReference = mDatabase.getReference("class_schedule/LA01/la01_software_engineering/Session 4");
+        mReference = mDatabase.getReference("class_schedule/LA01/la01_software_engineering/");
 
         alarmList.add(new Alarm(
                 "Bukan dari Firebase",
@@ -97,15 +97,17 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                AlarmObject TempAlarm = snapshot.getValue(AlarmObject.class);
+                for(DataSnapshot _snapshot: snapshot.getChildren()) {
+                    AlarmObject TempAlarm = _snapshot.getValue(AlarmObject.class);
 
-                alarmList.add(new Alarm(
-                        TempAlarm.getTitle().toString(),
-                        TempAlarm.createAlarmActivation(),
-                        TempAlarm.getDescription(),
-                        TempAlarm.createScheduleStartTime(),
-                        TempAlarm.createScheduleEndTime()
-                ));
+                    alarmList.add(new Alarm(
+                            TempAlarm.getTitle().toString(),
+                            TempAlarm.createAlarmActivation(),
+                            TempAlarm.getDescription(),
+                            TempAlarm.createScheduleStartTime(),
+                            TempAlarm.createScheduleEndTime()
+                    ));
+                }
                 adapter.notifyDataSetChanged();
             }
 
