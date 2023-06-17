@@ -49,7 +49,7 @@
                     android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/username"
+                    android:id="@+id/tvDisplayName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -59,7 +59,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/nim"
+                    android:id="@+id/tvNim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

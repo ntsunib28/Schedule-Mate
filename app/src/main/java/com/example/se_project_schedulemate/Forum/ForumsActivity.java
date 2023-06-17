@@ -11,13 +11,21 @@ import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.se_project_schedulemate.Alarm.AlarmsPageActivity;
 import com.example.se_project_schedulemate.Assignment.AssignmentActivity;
+import com.example.se_project_schedulemate.Models.User;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
 import com.example.se_project_schedulemate.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Timestamp;
 import java.util.Vector;
@@ -26,8 +34,12 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
 
     RecyclerView rv_forum;
     Vector<Forum> forumList;
-
     ImageView settingBtn;
+    TextView tvDisplayName, tvNim;
+    private FirebaseAuth auth;
+    private DatabaseReference mReference;
+    final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
+
 
     private void init(){
         rv_forum = findViewById(R.id.rv_forums);
@@ -97,13 +109,27 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
 
 
         init();
+
+        //        FIREBASE
+        auth = FirebaseAuth.getInstance();
+        mReference = mDatabase.getReference().child("user_data").child(auth.getUid());
+//                                    END
+
+        tvDisplayName = findViewById(R.id.tvDisplayName);
+        tvNim = findViewById(R.id.tvNim);
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userTemp = snapshot.getValue(User.class);
+                tvDisplayName.setText(userTemp.getName());
+                tvNim.setText(userTemp.getNim());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
-
-    @Override
-    public void onClick(int position) {
-
-    }
-
 
     BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener(){
@@ -112,14 +138,21 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
                     if(item.getItemId() == R.id.alarms_menu){
                         Intent intent = new Intent(ForumsActivity.this, AlarmsPageActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                     else if (item.getItemId() == R.id.assignments_menu) {
                         Intent intent = new Intent(ForumsActivity.this, AssignmentActivity.class);
                         startActivity(intent);
+                        finish();
                     }
 
                     return true;
                 }
             };
+
+    @Override
+    public void onClick(int position) {
+
+    }
 
 }

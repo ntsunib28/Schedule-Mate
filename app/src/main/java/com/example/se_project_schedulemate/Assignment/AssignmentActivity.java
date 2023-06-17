@@ -10,14 +10,22 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.se_project_schedulemate.Alarm.AlarmsPageActivity;
 import com.example.se_project_schedulemate.Forum.ForumsActivity;
+import com.example.se_project_schedulemate.Models.User;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
 import com.example.se_project_schedulemate.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Timestamp;
 import java.util.Vector;
@@ -26,6 +34,11 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
     RecyclerView rv_Assignment;
     Vector<Assignment> assignmentVector;
     ImageView settingsBtn;
+    TextView tvDisplayName, tvNim;
+    private FirebaseAuth auth;
+    private DatabaseReference mReference;
+    final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
+
 
     public void init(){
         rv_Assignment = findViewById(R.id.rv_Assignment);
@@ -61,6 +74,27 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
 
         init();
 
+//        FIREBASE
+        auth = FirebaseAuth.getInstance();
+        mReference = mDatabase.getReference().child("user_data").child(auth.getUid());
+//                                    END
+
+        tvDisplayName = findViewById(R.id.tvDisplayName);
+        tvNim = findViewById(R.id.tvNim);
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userTemp = snapshot.getValue(User.class);
+                tvDisplayName.setText(userTemp.getName());
+                tvNim.setText(userTemp.getNim());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
         //Setting dipencet
         settingsBtn = findViewById(R.id.settingsBtn);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,10 +113,12 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
                     if(item.getItemId() == R.id.alarms_menu){
                         Intent intent = new Intent(AssignmentActivity.this, AlarmsPageActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                     else if (item.getItemId() == R.id.forums_menu) {
                         Intent intent = new Intent(AssignmentActivity.this, ForumsActivity.class);
                         startActivity(intent);
+                        finish();
                     }
 
                     return true;

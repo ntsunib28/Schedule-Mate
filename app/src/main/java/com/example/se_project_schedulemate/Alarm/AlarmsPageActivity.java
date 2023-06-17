@@ -39,7 +39,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     RecyclerView rv_AlarmRecycler;
     Vector<Alarm> alarmList;
     ImageView settingsBtn;
-    TextView username, nim;
+    TextView tvDisplayName, tvNim;
 
 
     FirebaseAuth auth;
@@ -149,9 +149,25 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             finish();
         }
 
-        //INIT
-        username = findViewById(R.id.username);
-        nim = findViewById(R.id.nim);
+        auth = FirebaseAuth.getInstance();
+        mReference = mDatabase.getReference().child("user_data").child(auth.getUid());
+//                                    END
+
+        tvDisplayName = findViewById(R.id.tvDisplayName);
+        tvNim = findViewById(R.id.tvNim);
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userTemp = snapshot.getValue(User.class);
+                tvDisplayName.setText(userTemp.getName());
+                tvNim.setText(userTemp.getNim());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
         init();
     }
 
@@ -162,10 +178,12 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
                     if(item.getItemId() == R.id.assignments_menu){
                         Intent intent = new Intent(AlarmsPageActivity.this, AssignmentActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                     else if (item.getItemId() == R.id.forums_menu) {
                         Intent intent = new Intent(AlarmsPageActivity.this, ForumsActivity.class);
                         startActivity(intent);
+                        finish();
                     }
 
                     return true;
