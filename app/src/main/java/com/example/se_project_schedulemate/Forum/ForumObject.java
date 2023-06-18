@@ -1,5 +1,7 @@
 package com.example.se_project_schedulemate.Forum;
 
+import android.util.Log;
+
 import java.sql.Timestamp;
 
 public class ForumObject {
@@ -8,6 +10,7 @@ public class ForumObject {
     private Long Year, Month, Day, Hour, Minute;
 
     public Timestamp createDeadline() {
+        Timestamp newtimestamp = Timestamp.valueOf("2023-12-10 12:59:00");
         return new Timestamp(getYear(), getMonth(), getDay(), getHour(), getMinute(), 0 ,0);
     }
 
