@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 
 public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.ViewHolder> {
@@ -39,11 +41,20 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        // create format
+        DateFormat notificationFormat = new SimpleDateFormat("HH:mm - dd/MM/yyyy");
+        DateFormat deadlineFormat = new SimpleDateFormat("dd MMMM yyyy - HH:mm");
+
+        // Simpen dalam bentuk string
+        String str_notification = notificationFormat.format(assignments.get(position).getNotification());
+        String str_deadline = deadlineFormat.format(assignments.get(position).getDeadline());
+
         holder.tvAssignmentName.setText(assignments.get(position).getAssignmentName());
-        holder.tvNotification.setText("Notification: " + assignments.get(position).getNotification());
+        holder.tvNotification.setText("Notification: " + str_notification);
         holder.tvSession.setText("Session: " + assignments.get(position).getSession());
         holder.tvLecturer.setText(assignments.get(position).getLecturer());
-        holder.tvDeadline.setText("DEADLINE: " + assignments.get(position).getDeadline());
+        holder.tvDeadline.setText("DEADLINE: " + str_deadline);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

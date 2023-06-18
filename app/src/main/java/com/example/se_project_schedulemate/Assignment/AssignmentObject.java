@@ -1,8 +1,27 @@
 package com.example.se_project_schedulemate.Assignment;
 
+import java.sql.Timestamp;
+
 public class AssignmentObject {
     int deadline_date, deadline_hour, deadline_minute, deadline_month, deadline_year, session;
     String title;
+
+    public Timestamp createDeadlineDate(){
+
+        // Masukin semua datanya ke wrapper
+        Integer dl_date, dl_hour, dl_minute, dl_month, dl_year;
+        dl_date = deadline_date;
+        dl_hour = deadline_hour;
+        dl_minute = deadline_minute;
+        dl_month = deadline_month;
+        dl_year = deadline_year;
+
+        String minute_str = String.format("%02d", dl_minute);
+        String hour_str = String.format("%02d", dl_hour);
+
+        Timestamp tempTimestamp = Timestamp.valueOf(dl_year+"-"+dl_month+"-"+dl_date+" "+hour_str+":"+minute_str+":00");
+        return tempTimestamp;
+    }
 
     public int getDeadline_date() {
         return deadline_date;

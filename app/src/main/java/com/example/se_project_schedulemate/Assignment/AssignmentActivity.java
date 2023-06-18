@@ -153,13 +153,10 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
 
                                                     assignmentVector.add(new Assignment(
                                                             tempAsg.getTitle(),
-                                                            new Timestamp
-                                                            (tempAsg.getDeadline_year(), tempAsg.getDeadline_month(), tempAsg.getDeadline_date()
-                                                            ,tempAsg.getDeadline_hour(), tempAsg.getDeadline_minute(), 0, 0)
-                                                            , tempAsg.getSession()
+                                                            tempAsg.createDeadlineDate(),
+                                                            tempAsg.getSession()
                                                     , lecturer
-                                                    , new Timestamp(tempAsg.getDeadline_year(), tempAsg.getDeadline_month(), tempAsg.getDeadline_date()
-                                                            ,tempAsg.getDeadline_hour(), tempAsg.getDeadline_minute(), 0, 0)));
+                                                    , tempAsg.createDeadlineDate()));
 
 
 //                                                    assignmentVector.add(new Assignment(tempAsg.getTitle(), new Timestamp(0), 7, lecturer, new Timestamp(0)));
