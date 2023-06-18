@@ -36,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
     ImageView backBtn;
     NumberPicker npClassSettings, npARSettings, npForumSettings;
     TextView descClass, descAsg2, descForum2;
-    int userClassSetting, userAsgSetting, userForumSetting;
+    int asg, classM, forum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +82,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 descClass.setText(newVal + " Minutes Before");
+                classM = newVal;
             }
         });
 
@@ -93,6 +94,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 descAsg2.setText(newVal + " Days");
+                asg = newVal;
             }
         });
 
@@ -104,6 +106,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 descForum2.setText(newVal + " Days");
+                forum = newVal;
             }
         });
 
@@ -128,6 +131,9 @@ public class SettingsActivity extends AppCompatActivity {
         applySettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mReference.child("assignment_reminder_days").setValue(asg);
+                mReference.child("class_alarm_minutes").setValue(classM);
+                mReference.child("forum_reminder_days").setValue(forum);
                 finish();
             }
         });
