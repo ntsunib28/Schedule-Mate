@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -44,35 +45,38 @@ public class SettingsActivity extends AppCompatActivity {
 //        NUMBER PICKER
         npClassSettings = findViewById(R.id.npClassSettings);
         descClass = findViewById(R.id.descClass);
-        npClassSettings.setMinValue(5);
-        npClassSettings.setMinValue(60);
-        npClassSettings.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                Log.d("TES NP", "onValueChange: ");
-                descClass.setText(newVal + "Minutes Before");
-            }
-        });
+        npClassSettings.setMinValue(1);
+        npClassSettings.setMaxValue(60);
+        npClassSettings.setValue(30);
+//      npClassSettings.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+//            @Override
+//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+//                Log.d("TES NP", "onValueChange: ");
+//                descClass.setText(newVal + "Minutes Before");
+//            }
+//        });
 
         npARSettings = findViewById(R.id.npARSettings);
         npARSettings.setMinValue(1);
-        npARSettings.setMinValue(7);
-        npARSettings.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-
-            }
-        });
+        npARSettings.setMaxValue(30);
+        npARSettings.setValue(3);
+//      npARSettings.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+//            @Override
+//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+//
+//            }
+//        });
 
         npForumSettings = findViewById(R.id.npForumSettings);
         npForumSettings.setMinValue(1);
-        npForumSettings.setMinValue(7);
-        npForumSettings.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-
-            }
-        });
+        npForumSettings.setMaxValue(30);
+        npForumSettings.setValue(3);
+//        npForumSettings.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+//            @Override
+//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+//
+//            }
+//        });
 
 
 

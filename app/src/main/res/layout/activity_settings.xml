@@ -84,6 +84,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:fontFamily="@font/josefinsans_regular"
+                    android:orientation="vertical"
                     android:gravity="center" />
 
                 <TextView
