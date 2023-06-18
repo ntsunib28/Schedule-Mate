@@ -10,8 +10,9 @@ public class ForumObject {
     private Long Year, Month, Day, Hour, Minute;
 
     public Timestamp createDeadline() {
-        Timestamp newtimestamp = Timestamp.valueOf("2023-12-10 12:59:00");
-        return new Timestamp(getYear(), getMonth(), getDay(), getHour(), getMinute(), 0 ,0);
+        Timestamp tempTimestamp = Timestamp.valueOf(Year+"-"+Month+"-"+Day+" "+Hour+":"+Minute+":00");
+//        return new Timestamp(getYear(), getMonth(), getDay(), getHour(), getMinute(), 0 ,0);
+        return tempTimestamp;
     }
 
     public String getTitle() {
@@ -26,23 +27,23 @@ public class ForumObject {
         return lecturer_id;
     }
 
-    public int getYear() {
-        return Math.toIntExact(Year);
+    public String getYear() {
+        return Year.toString();
     }
 
-    public int getMonth() {
-        return Math.toIntExact(Month);
+    public String getMonth() {
+        return Month.toString();
     }
 
-    public int getDay() {
-        return Math.toIntExact(Day);
+    public String getDay() {
+        return Day.toString();
     }
 
-    public int getHour() {
-        return Math.toIntExact(Hour);
+    public String getHour() {
+        return String.format("%02d", Hour.toString());
     }
 
-    public int getMinute() {
-        return Math.toIntExact(Minute);
+    public String getMinute() {
+        return String.format("%02d" ,Minute.toString());
     }
 }

@@ -13,6 +13,7 @@ import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Vector;
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder>{
@@ -49,9 +50,11 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder>{
 
 
 
-        String deadlineTime = String.format("%d %s %d - %02d.%02d", deadline.getDate(),
-                getMonthName(deadline.getMonth()), deadline.getYear(),
-                                    deadline.getHours(), deadline.getMinutes());
+//        String deadlineTime = String.format("%d %s %d - %02d.%02d", deadline.getDate(),
+//                getMonthName(deadline.getMonth()), deadline.getYear(),
+//                                    deadline.getHours(), deadline.getMinutes());
+
+        Date deadlineTime = new Date(deadline.getTime());
 
         holder.tvDeadline.setText("DEADLINE  : " + deadlineTime);
 
