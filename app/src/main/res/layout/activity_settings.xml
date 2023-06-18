@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
-                    android:text="Minutes Before"
+                    android:text=" Minutes Before"
                     android:fontFamily="@font/josefinsans_regular"/>
                 <TextView
                     android:id="@+id/subHeader2"
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:fontFamily="@font/josefinsans_regular"
-                    android:text="days" />
+                    android:text=" days" />
 
                 <TextView
                     android:id="@+id/subHeader3"
@@ -165,7 +165,7 @@
                     android:layout_gravity="bottom|center"
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/josefinsans_regular"
-                    android:text="days" />
+                    android:text=" days" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
