@@ -93,12 +93,14 @@
         android:layout_height="wrap_content"
         android:text="Assignment GSLC 2"
         android:textColor="@color/black"
+        android:fontFamily="@font/josefinsans_bold"
         android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/josefinsans_regular"
                 android:text="Notification: "
                 android:textColor="@color/black"/>
 
@@ -107,6 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Session "
+                android:fontFamily="@font/josefinsans_regular"
                 android:textColor="@color/black"/>
 
             <TextView
@@ -114,12 +117,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lecturer 101"
+                android:fontFamily="@font/josefinsans_regular"
                 android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/tvDeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/josefinsans_regular"
                 android:text="Deadline: "
                 android:textColor="#FF0000"/>
 

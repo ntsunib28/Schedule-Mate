@@ -43,8 +43,8 @@
             android:id="@+id/tvClassName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
             android:text="Software Engineering Class"
+            android:fontFamily="@font/josefinsans_bold"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -53,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Alarm : 12 April 2023, 09.00 GMT+7"
+            android:fontFamily="@font/josefinsans_regular"
             android:textColor="@color/black" />
 
         <TextView
@@ -60,12 +61,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Description : LEC - Session 10"
+            android:fontFamily="@font/josefinsans_regular"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvSessDuration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/josefinsans_regular"
             android:text="Duration : 09.20 - 11.00"
             android:textColor="@color/black" />
 

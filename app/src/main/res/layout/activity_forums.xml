@@ -55,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="0dp"
+                    android:fontFamily="@font/josefinsans_regular"
                     android:text="John Doeng"
                     android:textSize="20sp" />
 
@@ -64,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="0dp"
+                    android:fontFamily="@font/josefinsans_regular"
                     android:text="25069696969"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -115,7 +117,6 @@
         android:layout_height="39dp"
         android:layout_marginTop="135dp"
         android:background="@drawable/round_rectangle"
-        android:fontFamily="sans-serif"
         android:paddingTop="3dp"
         android:paddingBottom="5dp"
         android:text="Forums"
