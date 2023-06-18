@@ -59,6 +59,9 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
         DatabaseReference tempReference = mDatabase.getReference("class_groups");
         List<String> classes_list = new ArrayList<String>();
         List<String> user_class = new ArrayList<String>();
+
+        // START ADD ISI FORUM LEWAT DATABASE
+        // START ADD ISI FORUM LEWAT DATABASE
         tempReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -142,7 +145,8 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
 
             }
         });
-
+        // END ISI FORUM LEWAT DATABASE
+        // END ISI FORUM LEWAT DATABASE
     }
 
     @Override

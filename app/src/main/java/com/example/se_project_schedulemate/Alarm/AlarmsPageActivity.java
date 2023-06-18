@@ -93,6 +93,8 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         List<String> user_class = new ArrayList<String>();
 
         // Start read id siswa per kelas
+        // Start read id siswa per kelas
+        // Start read id siswa per kelas
         tempReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -177,8 +179,8 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
             }
         });
         // End read id siswa per kelas
-
-
+        // End read id siswa per kelas
+        // End read id siswa per kelas
 
     }
 
