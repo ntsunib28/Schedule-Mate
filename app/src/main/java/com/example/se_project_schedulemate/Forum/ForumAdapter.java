@@ -13,6 +13,8 @@ import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
@@ -48,15 +50,12 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder>{
         holder.tvSessionName.setText(forumItems.get(position).getForumSession());
         holder.tvLecturerName.setText(forumItems.get(position).getForumLecturer());
 
-
-
-//        String deadlineTime = String.format("%d %s %d - %02d.%02d", deadline.getDate(),
-//                getMonthName(deadline.getMonth()), deadline.getYear(),
-//                                    deadline.getHours(), deadline.getMinutes());
-
-        Date deadlineTime = new Date(deadline.getTime());
-
+        // Begin Formatting tanggal
+        DateFormat deadlineFormat = new SimpleDateFormat("dd MMMM yyyy - HH:mm");
+        Date _deadlineTime = new Date(deadline.getTime());
+        String deadlineTime = deadlineFormat.format(_deadlineTime);
         holder.tvDeadline.setText("DEADLINE  : " + deadlineTime);
+        // End Formatting Tanggal dan set text.
 
         holder.itemView.findViewById(R.id.cv_forumCard).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,52 +84,6 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder>{
             tvDeadline = itemView.findViewById(R.id.tvDeadline);
         }
 
-    }
-
-    public String getMonthName (int monthIndex){
-
-        String returnString = null;
-
-        switch(monthIndex){
-            case 0:
-                returnString = "January";
-                break;
-            case 1:
-                returnString = "February";
-                break;
-            case 2:
-                returnString = "March";
-                break;
-            case 3:
-                returnString = "April";
-                break;
-            case 4:
-                returnString = "May";
-                break;
-            case 5:
-                returnString = "June";
-                break;
-            case 6:
-                returnString = "July";
-                break;
-            case 7:
-                returnString = "August";
-                break;
-            case 8:
-                returnString = "September";
-                break;
-            case 9:
-                returnString = "October";
-                break;
-            case 10:
-                returnString = "November";
-                break;
-            case 11:
-                returnString = "December";
-                break;
-
-        }
-        return returnString;
     }
 
 }

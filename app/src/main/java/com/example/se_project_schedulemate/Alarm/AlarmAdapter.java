@@ -12,6 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.se_project_schedulemate.MyInterface;
 import com.example.se_project_schedulemate.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Vector;
 
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
@@ -42,32 +47,29 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull AlarmAdapter.ViewHolder holder, int position) {
 
-        int hour = listAlarm.get(position).getAlarmActivation().getHours();
-        int minute = listAlarm.get(position).getAlarmActivation().getMinutes();
         String alarmTitle = listAlarm.get(position).getAlarmTitle();
-        String alarmTimeD = "Alarm : " + listAlarm.get(position).getAlarmActivation().getDate() +
-                " " + getMonth(listAlarm.get(position).getAlarmActivation().getMonth()) +
-                " " + listAlarm.get(position).getAlarmActivation().getYear() +
-                " " + String.format("%02d:%02d", hour, minute);
         String description = "Description : " + listAlarm.get(position).getAlarmDescription();
 
-        // duration Begin
-        int durBeginHrs = listAlarm.get(position).getScheduleStartTime().getHours();
-        int durBeginMin = listAlarm.get(position).getScheduleStartTime().getMinutes();
+        // Set Alarm time.
+        // ini kalo lu paham cara ngurangin waktunya berdasarkan settingan silakan karna gw gapaham
+        DateFormat dtf = new SimpleDateFormat("dd MMMM yyyy, HH:mm z");
+        Date _alarmTimeD = new Date(listAlarm.get(position).getAlarmActivation().getTime());
+        String alarmTimeD = "Alarm : " + dtf.format(_alarmTimeD);
 
-        String durBegin = String.format("%02d:%02d", durBeginHrs, durBeginMin);
+        // duration Begin
+        DateFormat startDurFormat = new SimpleDateFormat("HH:mm");
+        Date _durStart = new Date(listAlarm.get(position).getScheduleStartTime().getTime());
+        String durStart = startDurFormat.format(_durStart);
 
         // Duration End
-        int durEndHrs = listAlarm.get(position).getScheduleEndTime().getHours();
-        int durEndMin = listAlarm.get(position).getScheduleEndTime().getMinutes();
-
-        String durEnd = String.format("%02d:%02d", durEndHrs, durEndMin);
+        DateFormat endDurFormat = new SimpleDateFormat("HH:mm");
+        Date _durEnd = new Date(listAlarm.get(position).getScheduleEndTime().getTime());
+        String durEnd = startDurFormat.format(_durEnd);
 
         holder.tvClassName.setText(alarmTitle);
         holder.tvAlarmTime.setText(alarmTimeD);
         holder.tvDescription.setText(description);
-        holder.tvSessDuration.setText("Duration  : " + durBegin
-                                        + " - " + durEnd);
+        holder.tvSessDuration.setText("Duration  : " + durStart + " - " + durEnd );
 
         holder.itemView.findViewById(R.id.cv_alarmCard).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,50 +100,5 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
 
     }
 
-    public String getMonth (int monthIndex){
-
-        String returnString = null;
-
-        switch(monthIndex){
-            case 0:
-                returnString = "January";
-                break;
-            case 1:
-                returnString = "February";
-                break;
-            case 2:
-                returnString = "March";
-                break;
-            case 3:
-                returnString = "April";
-                break;
-            case 4:
-                returnString = "May";
-                break;
-            case 5:
-                returnString = "June";
-                break;
-            case 6:
-                returnString = "July";
-                break;
-            case 7:
-                returnString = "August";
-                break;
-            case 8:
-                returnString = "September";
-                break;
-            case 9:
-                returnString = "October";
-                break;
-            case 10:
-                returnString = "November";
-                break;
-            case 11:
-                returnString = "December";
-                break;
-
-        }
-        return returnString;
-    }
 
 }
