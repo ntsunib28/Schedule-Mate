@@ -171,7 +171,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
                     });
                 }
 
-
+//                alarmList.sort();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

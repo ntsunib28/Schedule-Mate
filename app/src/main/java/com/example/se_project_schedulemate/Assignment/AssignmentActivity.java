@@ -129,7 +129,7 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         lecturer = snapshot.getKey();
-                                        Log.d("Lecturer Name", snapshot.getValue().toString());
+//                                        Log.d("Lecturer Name", snapshot.getValue().toString());
                                     }
 
                                     @Override
