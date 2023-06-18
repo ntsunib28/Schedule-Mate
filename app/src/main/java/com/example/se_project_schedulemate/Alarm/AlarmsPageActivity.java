@@ -29,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     Vector<Alarm> alarmList;
     ImageView settingsBtn;
     TextView tvDisplayName, tvNim;
+    ImageView ivProfilePic;
 
 
     FirebaseAuth auth;
@@ -223,12 +226,19 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
 
         tvDisplayName = findViewById(R.id.tvDisplayName);
         tvNim = findViewById(R.id.tvNim);
+        ivProfilePic = findViewById(R.id.profilePic);
+//        try {
+//            File imgFile = File.createTempFile("tempfile", ".jpg");
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userTemp = snapshot.getValue(User.class);
                 tvDisplayName.setText(userTemp.getName());
                 tvNim.setText(userTemp.getNim());
+//                ivProfilePic.setImageResource(userTemp.getPhoto());
 
             }
 
