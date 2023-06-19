@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -30,7 +32,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +47,7 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
     RecyclerView rv_forum;
     Vector<Forum> forumList;
     ImageView settingBtn;
+    ImageView ivProfilePic;
     TextView tvDisplayName, tvNim;
     private FirebaseAuth auth;
     private DatabaseReference mReference;
@@ -179,12 +186,33 @@ public class ForumsActivity extends AppCompatActivity implements MyInterface {
 
         tvDisplayName = findViewById(R.id.tvDisplayName);
         tvNim = findViewById(R.id.tvNim);
+        ivProfilePic = findViewById(R.id.profilePic);
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userTemp = snapshot.getValue(User.class);
                 tvDisplayName.setText(userTemp.getName());
                 tvNim.setText(userTemp.getNim());
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+
+                StorageReference imageRef = storage.getReference().child(userTemp.getPhoto());
+
+                File localFile;
+                try {
+                    localFile = File.createTempFile("images", "jpg");
+                    imageRef.getFile(localFile)
+                            .addOnSuccessListener(taskSnapshot -> {
+                                // The image has been successfully downloaded to the local file
+                                // Use the local file as needed (e.g., display it in an ImageView)
+                                Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                                ivProfilePic.setImageBitmap(bitmap);
+                            })
+                            .addOnFailureListener(exception -> {
+                                // Handle any errors that occurred during the download
+                            });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
