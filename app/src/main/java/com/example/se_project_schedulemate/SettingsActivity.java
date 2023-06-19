@@ -131,9 +131,15 @@ public class SettingsActivity extends AppCompatActivity {
         applySettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mReference.child("assignment_reminder_days").setValue(asg);
-                mReference.child("class_alarm_minutes").setValue(classM);
-                mReference.child("forum_reminder_days").setValue(forum);
+                if(asg != 0){
+                    mReference.child("assignment_reminder_days").setValue(asg);
+                }
+                if(classM != 0){
+                    mReference.child("class_alarm_minutes").setValue(classM);
+                }
+                if(forum != 0){
+                    mReference.child("forum_reminder_days").setValue(forum);
+                }
                 finish();
             }
         });
