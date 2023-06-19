@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -31,12 +33,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 import com.example.se_project_schedulemate.Models.User;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class AlarmsPageActivity extends AppCompatActivity implements MyInterface {
 
@@ -45,10 +48,7 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
     ImageView settingsBtn;
     TextView tvDisplayName, tvNim;
     ImageView ivProfilePic;
-
-
     FirebaseAuth auth;
-    FirebaseAuth.AuthStateListener authListener;
     FirebaseUser user;
     // Ini tes langsung pake url
     final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://schedule-mate-70c31-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -227,18 +227,34 @@ public class AlarmsPageActivity extends AppCompatActivity implements MyInterface
         tvDisplayName = findViewById(R.id.tvDisplayName);
         tvNim = findViewById(R.id.tvNim);
         ivProfilePic = findViewById(R.id.profilePic);
-//        try {
-//            File imgFile = File.createTempFile("tempfile", ".jpg");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+
+
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userTemp = snapshot.getValue(User.class);
                 tvDisplayName.setText(userTemp.getName());
                 tvNim.setText(userTemp.getNim());
-//                ivProfilePic.setImageResource(userTemp.getPhoto());
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+
+                StorageReference imageRef = storage.getReference().child(userTemp.getPhoto());
+
+                File localFile;
+                try {
+                    localFile = File.createTempFile("images", "jpg");
+                    imageRef.getFile(localFile)
+                            .addOnSuccessListener(taskSnapshot -> {
+                                // The image has been successfully downloaded to the local file
+                                // Use the local file as needed (e.g., display it in an ImageView)
+                                Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                                ivProfilePic.setImageBitmap(bitmap);
+                            })
+                            .addOnFailureListener(exception -> {
+                                // Handle any errors that occurred during the download
+                            });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             }
 
