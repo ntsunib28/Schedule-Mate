@@ -1,4 +1,5 @@
 package com.example.se_project_schedulemate.Alarm;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -11,11 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.se_project_schedulemate.R;
 
@@ -23,60 +21,54 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class SetAlarm extends AppCompatActivity {
-    private TimePicker timePicker;
-    private Button saveAlarm;
 
-
-    ImageView backBtn;
-    TextView tvSession, tvClassName;
-//    private EditText edit = (EditText) findViewById(R.id.alarmName);
-//    public static String alarmName;
-    private int hour, minutes;
+    TimePicker timePicker;
+    Button saveAlarm;
+    private int jam, menit;
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_alarm_activity);
 
+        ImageView backBtn;
         backBtn = findViewById(R.id.backBtn);
 
-        tvClassName = findViewById(R.id.tvClassName);
-        tvSession = findViewById(R.id.tvSession);
-        tvClassName.setText(getIntent().getStringExtra("Title"));
-        tvSession.setText(getIntent().getStringExtra("Description"));
-
-        timePicker = findViewById(R.id.timePicker);
-        saveAlarm = findViewById(R.id.saveAlarm);
-//        alarmName = (String) edit.getText().toString();
-        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-            @Override
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                hour = hourOfDay;
-                minutes = minute;
-            }
-        });
-
-        saveAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(SetAlarm.this, "Set Alarm " + hour + ": "+ minutes, Toast.LENGTH_SHORT).show();
-                setTimer();
-                notification();
-            }
-        });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
+        timePicker = findViewById(R.id.timePicker);
+        saveAlarm = findViewById(R.id.saveAlarm);
+
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                jam = hourOfDay;
+                menit = minute;
+            }
+        });
+
+        saveAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SetAlarm.this, "Set Alarm " + jam + " : " + menit, Toast.LENGTH_SHORT).show();
+                setTimer();
+                notification();
+            }
+        });
     }
 
     private void notification() {
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            CharSequence name = "com/example/se_project_schedulemate/Alarm";
+            CharSequence name = "Alarm Reminders";
             String description = "Hey, Wake Up!!";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
 
-            NotificationChannel channel = new NotificationChannel("Alarm Reminders", name, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel  = new NotificationChannel("Notify", name,importance);
             channel.setDescription(description);
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
@@ -85,7 +77,7 @@ public class SetAlarm extends AppCompatActivity {
     }
 
     private void setTimer() {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        AlarmManager alarmManager  = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         Date date = new Date();
 
@@ -95,11 +87,11 @@ public class SetAlarm extends AppCompatActivity {
         cal_now.setTime(date);
         cal_alarm.setTime(date);
 
-        cal_alarm.set(Calendar.HOUR_OF_DAY, hour);
-        cal_alarm.set(Calendar.MINUTE, minutes);
+        cal_alarm.set(Calendar.HOUR_OF_DAY, jam);
+        cal_alarm.set(Calendar.MINUTE, menit);
         cal_alarm.set(Calendar.SECOND, 0);
 
-        if(cal_alarm.before((cal_now))){
+        if(cal_alarm.before(cal_now)){
             cal_alarm.add(Calendar.DATE, 1);
         }
 

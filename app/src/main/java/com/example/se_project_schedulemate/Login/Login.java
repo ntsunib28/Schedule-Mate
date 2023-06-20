@@ -106,6 +106,7 @@ public class Login extends AppCompatActivity {
                                         }
                                     });
 
+//                                    asdasdasdasdasdasd
 
                                     Intent intent = new Intent(Login.this, AlarmsPageActivity.class);
                                     startActivity(intent);

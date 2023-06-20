@@ -121,6 +121,7 @@
         android:paddingTop="3dp"
         android:paddingBottom="5dp"
         android:text="Forums"
+        android:fontFamily="@font/josefinsans_bold"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#000000"

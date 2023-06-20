@@ -1,7 +1,10 @@
 package com.example.se_project_schedulemate.Alarm;
 
+import android.Manifest;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,18 +32,17 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         vibrator.vibrate(2000);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "Alarm Reminders")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "Notify")
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentText("com/example/se_project_schedulemate/Alarm")
+                .setContentText("Alarm Reminders")
                 .setContentText("Hey, Wake Up!")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent);
 
-
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
-        if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -56,11 +58,12 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
         Ringtone r = RingtoneManager.getRingtone(context,sound);
         r.play();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 r.stop();
             }
-        }, 60000); // 60 seconds delay
+        }, 10000); // 60 seconds delay
     }
 }

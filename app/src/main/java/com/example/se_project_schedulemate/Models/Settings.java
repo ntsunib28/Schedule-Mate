@@ -2,7 +2,8 @@ package com.example.se_project_schedulemate.Models;
 
 public class Settings {
     int assignment_reminder_days;
-
+    int class_alarm_minutes;
+    int forum_reminder_days;
     public int getAssignment_reminder_days() {
         return assignment_reminder_days;
     }
@@ -27,6 +28,5 @@ public class Settings {
         this.forum_reminder_days = forum_reminder_days;
     }
 
-    int class_alarm_minutes;
-    int forum_reminder_days;
+
 }

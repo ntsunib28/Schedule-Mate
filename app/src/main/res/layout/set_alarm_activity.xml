@@ -250,9 +250,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/round_green"/>
 
-
-
-
     <TextView
         android:id="@+id/Title"
         android:layout_width="wrap_content"
@@ -271,6 +268,7 @@
         android:layout_width="267dp"
         android:layout_height="54dp"
         android:layout_marginTop="55dp"
+        android:textAlignment="center"
         android:text="Software Engineering Class"
         android:fontFamily="@font/josefinsans_bold"
         android:textColor="#000000"

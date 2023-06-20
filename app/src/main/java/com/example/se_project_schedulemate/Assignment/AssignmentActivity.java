@@ -127,7 +127,6 @@ public class AssignmentActivity extends AppCompatActivity implements MyInterface
                 addTo = false;
                 for (int i = 0; i < classes_list.size(); i++){
                     String kelas = classes_list.get(i);
-                    Log.d("TCEYB", "Iterasi kelas " + kelas );
                     DatabaseReference temp = mDatabase.getReference("class_groups/" + kelas + "/students/");
                     String userID = user.getUid();
                     temp.addValueEventListener(new ValueEventListener() {

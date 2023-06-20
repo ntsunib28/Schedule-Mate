@@ -106,6 +106,7 @@
             android:background="#FFFFFFFF"
             app:itemIconSize="40dp"
             app:labelVisibilityMode="unlabeled"
+            
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_menu" />
@@ -122,6 +123,7 @@
         android:paddingTop="3dp"
         android:paddingBottom="5dp"
         android:text="This Week"
+        android:fontFamily="@font/josefinsans_bold"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#000000"
