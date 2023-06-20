@@ -64,8 +64,8 @@ public class SetAlarm extends AppCompatActivity {
     private void notification() {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            CharSequence name = "Alarm Reminders";
-            String description = "Hey, Wake Up!!";
+            CharSequence name = "Schedule Mate Reminder";
+            String description = "Hey, your class is about to start!";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
 
             NotificationChannel channel  = new NotificationChannel("Notify", name,importance);
